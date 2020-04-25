@@ -3,8 +3,6 @@ require_once('connection.php');
 
 session_start();
 
-echo password_hash("password", PASSWORD_DEFAULT);
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<h1>Login</h1>";
