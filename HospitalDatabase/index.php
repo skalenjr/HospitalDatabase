@@ -14,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</tbody>";
     echo "</table>";
     echo "</form>";
-    echo "<input type='submit' name='submit'>Submit</button>";
+    echo "<input type='submit' name='submit' value='Submit'>";
+    
 }
 else{
     
