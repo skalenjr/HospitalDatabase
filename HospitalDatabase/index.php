@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tbody>";
     echo "<tr><td>Username</td><td><input name='username' type='text' size='25'></td></tr>";
     echo "<tr><td>Password</td><td><input name='password' type='text' size='25'></td></tr>";
-    echo "<button type='submit' name='submit'>Submit</button>";
     echo "</tbody>";
     echo "</table>";
     echo "</form>";
+    echo "<button type='submit' name='submit'>Submit</button>";
     
     $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
