@@ -3,14 +3,20 @@ require_once('connection.php');
 
 session_start();
 
+echo password_hash("password", PASSWORD_DEFAULT);
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<h1>Login</h1>";
+    echo "<form method='post' action='index.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
     echo "<tr><td>Username</td><td><input name='username' type='text' size='25'></td></tr>";
     echo "<tr><td>Password</td><td><input name='password' type='text' size='25'></td></tr>";
     echo "<button type='submit' name='submit'>Submit</button>";
+    echo "</tbody>";
+    echo "</table>";
+    echo "</form>";
     
     $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_DEFAULT);
     
