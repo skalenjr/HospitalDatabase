@@ -39,14 +39,14 @@ else{
             else{
                 unset ($_SESSION["hashedPassword"]);
                 echo "Password Incorrect";
-                echo "<br /><a href='index.php'>'Try again'</a>";
+                echo "<br /><a href='index.php'>Try again</a>";
                 
             }
         }
         else{
             unset ($_SESSION["hashedPassword"]);
             echo "Username Incorrect";
-            echo "<br /><a href='index.php'>'Try again'</a>";
+            echo "<br /><a href='index.php'>Try again</a>";
         }
         
     } catch (PDOException $e) {
