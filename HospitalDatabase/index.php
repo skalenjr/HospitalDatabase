@@ -10,13 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
     echo "<tr><td>Username</td><td><input name='username' type='text' size='15'></td></tr>";
-    echo "<tr><td>Password</td><td><input name='password' type='text' size='25'></td></tr>";
+    echo "<tr><td>Password</td><td><input name='password' type='text' size='15'></td></tr>";
     echo "</tbody>";
     echo "</table>";
     echo "<input type='submit' name='submit' value='Submit'>";
     echo "</form>";
-    
-    
 }
 else{
     
@@ -24,24 +22,35 @@ else{
     
         $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_DEFAULT);
         
-        $STMT = $conn->prepare("select * from login_info where username = :user_name");
-        $STMT->bindValue(':user_name', $_POST['username']);
-        
+        $STMT = $conn->prepare("select username from login_info where username = :username");
+        $STMT->bindValue(':username', $_POST['username']);
         $STMT->execute();
-        
         $row = $STMT-> fetch();
         
-        if(password_verify($_SESSION["hashedPassword"], $row['password'])) {        
-            unset ($_SESSION["hashedPassword"]);
-            header("Location: hospitalDatabase.php");
-        } 
+        if($row != NULL){
+            $STMT = $conn->prepare("select password from login_info where username = :username");
+            $STMT->bindValue(':username', $_POST['username']);
+            $STMT->execute();           
+            $row = $STMT-> fetch();
+            if(password_verify($_SESSION["hashedPassword"], $row['password'])) {        
+                unset ($_SESSION["hashedPassword"]);
+                header("Location: hospitalDatabase.php");
+            } 
+            else{
+                unset ($_SESSION["hashedPassword"]);
+                echo "Password Incorrect";
+                echo "<a href='index.php'>'Try again'</a>";
+                
+            }
+        }
         else{
-            echo "Password Incorrect";
+            unset ($_SESSION["hashedPassword"]);
+            echo "Username Incorrect";
+            echo "<a href='index.php'>'Try again'</a>";
         }
         
-        unset ($_SESSION["hashedPassword"]);
-        
     } catch (PDOException $e) {
+        unset ($_SESSION["hashedPassword"]);
         echo "Error: " . $e->getMessage();
     }
 }
