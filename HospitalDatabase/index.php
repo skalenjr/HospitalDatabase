@@ -34,7 +34,7 @@ else{
             $row = $STMT-> fetch();
             if(password_verify($_POST['password'], $row[password])) {        
                 unset ($_SESSION["hashedPassword"]);
-                header("Location: hospitalDatabase.php");
+                header("Location: hospitaldatabase.php");
             } 
             else{
                 unset ($_SESSION["hashedPassword"]);
