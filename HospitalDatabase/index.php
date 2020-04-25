@@ -1,6 +1,8 @@
 <?php
 require_once('connection.php');
 
+echo password_hash("password", PASSWORD_BCRYPT);
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -20,7 +22,7 @@ else{
     
     try{
     
-        $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_BCRYPT);
         
         $STMT = $conn->prepare("select username from login_info where username = :username");
         $STMT->bindValue(':username', $_POST['username']);
@@ -39,14 +41,14 @@ else{
             else{
                 unset ($_SESSION["hashedPassword"]);
                 echo "Password Incorrect";
-                echo "<a href='index.php'>'Try again'</a>";
+                echo "<br /><a href='index.php'>'Try again'</a>";
                 
             }
         }
         else{
             unset ($_SESSION["hashedPassword"]);
             echo "Username Incorrect";
-            echo "<a href='index.php'>'Try again'</a>";
+            echo "<br /><a href='index.php'>'Try again'</a>";
         }
         
     } catch (PDOException $e) {
