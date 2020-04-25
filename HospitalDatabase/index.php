@@ -5,7 +5,8 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
-    echo "<h1>Login</h1>";
+    echo "<h1>Hospital Database</h1>";
+    echo "<h2>Login</h2>";
     echo "<form method='post' action='index.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
