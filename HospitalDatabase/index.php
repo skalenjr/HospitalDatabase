@@ -15,24 +15,31 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</table>";
     echo "</form>";
     echo "<button type='submit' name='submit'>Submit</button>";
+}
+else{
     
-    $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    try{
     
-    $STMT = $conn->prepare("select * from login_info where username = :user_name");
-    $STMT->bindValue(':user_name', $_POST['username']);
-    
-    $STMT->execute();
-    
-    $row = $STMT-> fetch();
-    
-    if(password_verify($_SESSION["hashedPassword"], $row['password'])) {        
+        $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        
+        $STMT = $conn->prepare("select * from login_info where username = :user_name");
+        $STMT->bindValue(':user_name', $_POST['username']);
+        
+        $STMT->execute();
+        
+        $row = $STMT-> fetch();
+        
+        if(password_verify($_SESSION["hashedPassword"], $row['password'])) {        
+            unset ($_SESSION["hashedPassword"]);
+            header("Location: hospitalDatabase.php");
+        } 
+        else{
+            echo "Password Incorrect";
+        }
+        
         unset ($_SESSION["hashedPassword"]);
-        header("Location: hospitalDatabase.php");
-    } 
-    else{
-        echo "Password Incorrect";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
-    
-    unset ($_SESSION["hashedPassword"]);
 }
 ?>
