@@ -1,6 +1,9 @@
 <?php
 
-require_once('connection.php');
+$servername = "localhost";
+$username = "myusername";
+$password = "508passwd!";
+$database = "hospitalDatabase";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
