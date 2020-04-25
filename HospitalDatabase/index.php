@@ -13,8 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Password</td><td><input name='password' type='text' size='25'></td></tr>";
     echo "</tbody>";
     echo "</table>";
-    echo "</form>";
     echo "<input type='submit' name='submit' value='Submit'>";
+    echo "</form>";
+    
     
 }
 else{
