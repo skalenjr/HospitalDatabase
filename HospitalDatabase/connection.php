@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 $servername = "localhost";
-$username = "project_23";
-$password = "V00836202";
+$username = "myusername";
+$password = "508passwd!";
 $database = "myusername";
 
 try {
