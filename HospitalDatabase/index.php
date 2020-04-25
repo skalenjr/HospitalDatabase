@@ -1,8 +1,6 @@
 <?php
 require_once('connection.php');
 
-echo password_hash("password", PASSWORD_BCRYPT);
-
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
