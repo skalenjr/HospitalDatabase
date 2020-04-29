@@ -2,7 +2,7 @@
 
 require_once('../connection.php');
 
-$stmt = $conn->prepare("select Patient.PID, Person.first_name, Person.last_name from Person, Patient where Person.SSN = Patient.SSN order by Patient.pID");
+$stmt = $conn->prepare("select Patient.pID, Person.first_name, Person.last_name from Person, Patient where Person.SSN = Patient.SSN order by Patient.pID");
 $stmt->execute();
 
 echo "<table style='border: solid 1px black;'>";
