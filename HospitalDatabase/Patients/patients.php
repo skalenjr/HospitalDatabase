@@ -11,7 +11,9 @@ echo "<tbody>";
 
 while ($row = $stmt->fetch()) {
     $curpID = $row['pID'];
-    echo "<tr><td><a href='Patients/patient.php?pID=$curpID'>$row[pID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
+    if(isset($curpID) && !empty($curpID)){
+        echo "<tr><td><a href='Patients/patient.php?pID=$curpID'>$row[pID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
+    }
 }
 echo "</tbody>";
 echo "</table>";
