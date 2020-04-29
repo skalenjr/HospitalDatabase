@@ -7,7 +7,7 @@
 <ul>
 <li><a href="Patients/patients.php">View all patients</a></li>
 <li><a href="Patients/patient.php">View a patient's information</a></li>
-<li><a href="Patients/addPatient.php">Add patient</a></li>
+<li><a href="Patients/addPatient.php">Add a patient</a></li>
 <li><a href="Patients/editPatient.php">Edit a patient's information</a></li>
 </ul>
 <h2>Visits</h2>
