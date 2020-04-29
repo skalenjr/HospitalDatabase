@@ -1,6 +1,6 @@
 <?php
 
-require_once('connection.php');
+require_once('../connection.php');
 
 $stmt = $conn->prepare("select Patient.PID, Person.first_name, Person.last_name from Person, Patient where Person.SSN = Patient.SSN order by Patient.pID");
 $stmt->execute();
