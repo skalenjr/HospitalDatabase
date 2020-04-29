@@ -10,7 +10,7 @@ echo "<thead><tr><th>pID</th><th>First name</th><th>Last name</th></tr></thead>"
 echo "<tbody>";
 
 while ($row = $stmt->fetch()) {
-        echo "<tr><td>$row[pID]</td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
+        echo "<tr><td><a href='patient.php?pID=$row[pID]'>$row[pID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
 }
 echo "</tbody>";
 echo "</table>";
