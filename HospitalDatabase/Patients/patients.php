@@ -10,10 +10,7 @@ echo "<thead><tr><th>pID</th><th>First name</th><th>Last name</th></tr></thead>"
 echo "<tbody>";
 
 while ($row = $stmt->fetch()) {
-    $curpID = $row['pID'];
-    if(isset($curpID) && !empty($curpID)){
         echo "<tr><td>$row[pID]</td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
-    }
 }
 echo "</tbody>";
 echo "</table>";
