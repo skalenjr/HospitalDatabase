@@ -40,7 +40,7 @@ FOREIGN KEY (eID) REFERENCES Employee (eID));
 
 Create table Medical_Assistant(
 eID			int(255),
-physician		varchar(255),
+physician		int(255),
 PRIMARY KEY (eID),
 FOREIGN KEY (eID) REFERENCES Employee (eID),
 FOREIGN KEY (physician) REFERENCES Doctor (eID));
