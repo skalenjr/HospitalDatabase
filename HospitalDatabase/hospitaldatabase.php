@@ -1,7 +1,14 @@
 <?php
 $text="'s";
 
-require_once('connection.php');
+if (!$_SERVER['logIn'] = TRUE){
+    header("Location: ../index.php");
+}
+    
+echo '<div style="position: relative; width: 250px;">';
+echo '<div style="position: absolute; top: 0; right: -100; width: 100px; text-align:right;">';
+echo '<a href="../index.php">logout</a>';
+echo '</div>';
 
 echo '<html>';
 echo '<head>';
