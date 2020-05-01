@@ -75,7 +75,7 @@ INSERT INTO Rooms (department, room_number, room_floor) VALUES
 ('Cardiology', 2125, 2);
 
 INSERT INTO Visit (visitID, pID, admission_time, discharge_time, medical_issue, room_number) VALUES
-(208,	1680,	'8:32 PM', '1:52 PM','Other specified disorders of left external ear', 1377),
+(208,	1680,	'8:32 PM', '1:52 PM','Other specified disorders of left external ear', 1337),
 (287,	2322,	'5:57 PM', '1:26 PM','Inflammatory polyneuropathy, unspecified' ,1459),
 (107,	1319,	'9:39 PM', '2:37 PM','Secondary lacrimal gland atrophy'	, 3076),
 (377,	3212,	'9:41 AM', '9:20 PM','Adverse effect of antifungal antibiotics, systemically used',1015),
