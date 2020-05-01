@@ -17,7 +17,7 @@ echo "<option value='Nurses'> Nurses</option>";
 echo "</select>";
 echo "</form>";
 
-if($_SERVER['REQUEST_METHOD'] != 'POST' or $_GET['job']=='All'){
+if(!isset($_GET['job']) or $_GET['job']=='All'){
     $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Employee, Person where Employee.SSN=Person.SSN;");
     $stmt->execute();
     
