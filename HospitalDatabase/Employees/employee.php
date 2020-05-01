@@ -31,7 +31,7 @@ else {
     
     echo "<form method='get'>";
     echo "<select name='eID' onchange='this.form.submit();'>";
-    echo "<option value=''>Choose Employee</option>";
+    //echo "<option value=''>Choose Employee</option>";
     while ($row = $stmt->fetch()) {
         echo "<option value='$row[eID]'>$row[first_name] $row[last_name]</option>";
     }
