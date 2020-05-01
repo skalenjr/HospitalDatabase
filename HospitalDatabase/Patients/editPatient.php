@@ -62,6 +62,6 @@ else{
     }
     unset($oldSSN);
     
-    echo "<a href='Patients/patient.php?pID=$_GET["pID"]'>View patient's information</a>";
+    echo "<a href='Patients/patient.php?pID=$_GET[pID]'>View patient's information</a>";
 }
 ?>
