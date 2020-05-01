@@ -6,7 +6,7 @@ $stmt = $conn->prepare("select Patient.pID, Person.first_name, Person.last_name 
 $stmt->execute();
 
 echo "<table style='border: solid 1px black;'>";
-echo "<thead><tr><th>pID</th><th>First name</th><th>Last name</th></tr></thead>";
+echo "<thead><tr><th>Patient ID</th><th>First name</th><th>Last name</th></tr></thead>";
 echo "<tbody>";
 
 while ($row = $stmt->fetch()) {
