@@ -53,7 +53,7 @@ else{
     $stmt->bindValue(':SSN', $_POST['SSN']);
     $stmt->execute();
     
-    $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid= $row[pID]");
+    $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
     $stmt->bindValue(':SSN', $_POST['SSN']);
     $stmt->bindValue(':pID', $_GET["pID"]);
     $stmt->execute();
