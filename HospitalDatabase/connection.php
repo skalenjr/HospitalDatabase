@@ -16,7 +16,7 @@ try {
 }
 
 function checkLogIn(){
-    if (!$_SERVER['logIn']){
+    if ($_SERVER['logIn'] = FALSE){
         header("Location: ../index.php");
     }
 }
