@@ -90,7 +90,7 @@ FOREIGN KEY (medication) REFERENCES Medication(medication_name)
 
 Create table Procedure_Docs(
 procID			int(255),
-doctor			varchar(255),
+doctor			int(255),
 PRIMARY KEY (procID, doctor),
 FOREIGN KEY (procID) REFERENCES Procedures (procID),
 FOREIGN KEY (doctor) REFERENCES Doctor(eID)
@@ -98,7 +98,7 @@ FOREIGN KEY (doctor) REFERENCES Doctor(eID)
 
 Create table Procedure_Nurses(
 procID			int(255),
-nurses			varchar(255),
+nurses			int(255),
 PRIMARY KEY (procID, nurses),
 FOREIGN KEY (procID) REFERENCES Procedures (procID),
 FOREIGN KEY (nurses) REFERENCES Nurse (eID)
@@ -108,7 +108,7 @@ FOREIGN KEY (nurses) REFERENCES Nurse (eID)
 Create table Prescription(
 prescriptionID		int(255) AUTO_INCREMENT,
 pID			int(255) NOT NULL,
-visitID			varchar(255),
+visitID			int(255),
 medication		varchar(255) NOT NULL,
 directions		text NOT NULL,
 start_date		text NOT NULL,
