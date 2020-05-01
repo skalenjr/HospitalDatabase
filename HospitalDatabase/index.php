@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
     echo "<tr><td>Username</td><td><input name='username' type='text' size='15'></td></tr>";
-    echo "<tr><td>Password</td><td><input name='password' type='text' size='15'></td></tr>";
+    echo "<tr><td>Password</td><td><input name='password' type='password' size='15'></td></tr>";
     echo "</tbody>";
     echo "</table>";
-    echo "<input type='submit' name='submit' value='Submit'>";
+    echo "<input type='submit' name='submit' value='Sign in'>";
     echo "</form>";
 }
 else{
