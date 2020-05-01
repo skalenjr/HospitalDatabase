@@ -53,7 +53,7 @@ INSERT INTO Employee (eID, SSN, hire_date) VALUES
 (3332,'529-90-1876','8/27/2016'),
 (2603, '213-36-8214','10/10/1979');
 
-INSERT INTO Patient (pIF, SSN, type_of_insuance) VALUES
+INSERT INTO Patient (pID, SSN, type_of_insuance) VALUES
 (1680, '213-98-3803', 'Anthem'),
 (2322, '546-49-7689', 'UnitedHealth'),
 (1319, '011-46-1137', 'Blue Cross/Blue Shield'),
