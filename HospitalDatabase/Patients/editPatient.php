@@ -64,8 +64,9 @@ else{
         echo "Error: " . $e->getMessage();
     }
     
-    
-    echo "<a href='patient.php?pID=$_SESSION[pID]'>View patient's information</a>";
+    $pID = $_SESSION['pID'];
+    echo "<a href='patient.php?pID=$pID'>View patient's information</a>";
+    unset($pID);
     unset($_SESSION["pID"]);
 }
 ?>
