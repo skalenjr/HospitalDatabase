@@ -22,6 +22,7 @@ else{
     try{
         
         $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        echo password_hash('password', PASSWORD_BCRYPT);
         
         $STMT = $conn->prepare("select username from login_info where username = :username");
         $STMT->bindValue(':username', $_POST['username']);
