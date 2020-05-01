@@ -13,6 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>First name</td><td><input name='first_name' type='text' size='25'></td></tr>";
     echo "<tr><td>Last name</td><td><input name='last_name' type='text' size='25'></td></tr>";
     echo "<tr><td>Type Of Insurance</td><td><input name='type_of_insurance' type='text' size='25'></td></tr>";
+    echo "<tr><td>SSN</td><td><input name='SSN' type='text' size='11'></td></tr>";
+    echo "</tbody>";
+    echo "</table>";
+    echo "</form>";
 }
 else{
     try {
