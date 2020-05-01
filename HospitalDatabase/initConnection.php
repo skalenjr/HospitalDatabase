@@ -3,6 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+$_SERVER['LogIn'] = FALSE;
 $servername = "localhost";
 $username = "kalensn";
 $password = "V00836202";
@@ -14,13 +15,5 @@ try {
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-
-function checkLogIn(){
-    if (!$_SERVER['logIn']){
-        header("Location: ../index.php");
-    }
-}
-
-checkLogIn();
 
 ?>
