@@ -63,8 +63,8 @@ else{
     
     $eID = $_SESSION['eID'];
     echo "Employee Information Succesfully Updated<br/>";
-    echo "<a href='employee.php?eID=$eID'>View Employee's information</a>";
-    echo "<a href='editEmployee.php'>Edit Another Employee's information</a>";
+    echo "<a href='employee.php?eID=$eID'>View Employee's information</a><br/>";
+    echo "<a href='editEmployee.php'>Edit Another Employee's information</a><br/>";
     unset($pID);
     unset($_SESSION["eID"]);
     unset($_SESSION["SSN"]);

@@ -41,6 +41,6 @@ else{
     $stmt = $conn->prepare("select pID from Patient where SSN= $_POST[SSN];");
     $stmt->execute();
     $row = $stmt->fetch();
-    echo "<a href='patient.php?pID=$row[pID]'>View patient's information</a>";
+    echo "<a href='patient.php?pID=$row[pID]'>View patient's information</a><br/>";
 }
 ?><?php

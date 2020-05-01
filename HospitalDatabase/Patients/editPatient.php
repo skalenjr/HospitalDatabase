@@ -64,7 +64,7 @@ else{
     
     $pID = $_SESSION['pID'];
     echo "Patient Information Succesfully Updated<br/>";
-    echo "<a href='patient.php?pID=$pID'>View patient's information</a>";
+    echo "<a href='patient.php?pID=$pID'>View patient's information</a><br/>";
     unset($pID);
     unset($_SESSION["pID"]);
     unset($_SESSION["SSN"]);

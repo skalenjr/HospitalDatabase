@@ -22,7 +22,7 @@ if (isset($_GET['eID']))
     }
     echo "</tbody>";
     echo "</table>";
-    echo "<a href='editEmployee.php?pID=$eID'>Edit Employee's Information</a>";
+    echo "<a href='editEmployee.php?pID=$eID'>Edit Employee's Information</a><br/>";
 }
 else {
     // Retrieve list of Employees
