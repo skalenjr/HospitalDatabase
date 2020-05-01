@@ -29,7 +29,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     
     $oldSSN = $row['SSN'];
     
-    echo "<form method='post' action='editEmployee.php'>";
+    echo "<form method='post' action='editPatient.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
     echo "<tr><td>Patient ID:</td><td>$row[pID]</td></tr>";
