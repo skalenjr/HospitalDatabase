@@ -51,7 +51,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
-        echo $_SESSION["pID"];
+        echo $_SESSION["SSN"];
     $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name WHERE Person.SSN=:SSN; 
     UPDATE Patient SET Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID;");
     $stmt->bindValue(':first_name', $_POST['first_name']);
