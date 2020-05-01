@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Last name</td><td><input name='last_name' type='text' size='25'></td></tr>";
     echo "<tr><td>Type Of Insurance</td><td><input name='type_of_insurance' type='text' size='25'></td></tr>";
     echo "<tr><td>SSN</td><td><input name='SSN' type='text' size='11'></td></tr>";
+    echo "<tr><td>Address</td><td><input name='Address' type='text' size='100'></td></tr>";
+    echo "<tr><td>Date Of Birth</td><td><input name='DOB' type='text' size='9'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
@@ -21,11 +23,13 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN) VALUES(:first_name, :last_name, :SSN);
+        $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, Address, DOB) VALUES(:first_name, :last_name, :SSN, :Address, :DOB);
         INSERT IGNORE INTO Patient(SSN, type_of_insurance) VALUES(:SSN, :type_of_insurance);");
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
         $stmt->bindValue(':SSN', $_POST['SSN']);
+        $stmt->bindValue(':Address', $_POST['Address']);
+        $stmt->bindValue(':DOB', $_POST['DOB']);
         $stmt->bindValue(':type_of_insurance', $_POST['type_of_insurance']);;
         $stmt->execute();
     } catch (PDOException $e) {
