@@ -27,7 +27,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     
     $row = $stmt->fetch();
     
-    $oldSSN = $row[SSN];
+    $oldSSN = $row['SSN'];
     
     echo "<form method='post' action='editEmployee.php'>";
     echo "<table style='border: solid 1px black;'>";
@@ -36,7 +36,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "<tr><td>First Name</td><td><input name='first_name' type='text' size='15' value='$row[first_name]'></td></tr>";
     echo "<tr><td>Last Name</td><td><input name='last_name' type='text' size='15' value='$row[last_name]'></td></tr>";
     echo "<tr><td>SSN</td><td><input name='SSN' type='text' min='0.01' step='0.01' size='11' value='$row[SSN]'></td></tr>";
-    echo "<tr><td>Type of Insurance</td><td><input name='type_of_insurance' type='text' min='0.01' step='0.01' size='25' value='$row[type_of_insurance]'></td></tr>";
+    echo "<tr><td>Type of Insurance</td><td><input name='type_of_insurance' type='text' min='0.01' step='0.01' size='15' value='$row[type_of_insurance]'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
