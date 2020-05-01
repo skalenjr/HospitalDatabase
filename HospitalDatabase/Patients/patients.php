@@ -2,7 +2,7 @@
 
 require_once('../connection.php');
 
-echo "<h1>Hospital Database</h1>";
+echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Patients</h2>";
 
 $stmt = $conn->prepare("select Patient.pID, Person.first_name, Person.last_name from Person, Patient where Person.SSN = Patient.SSN order by Patient.pID");
