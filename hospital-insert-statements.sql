@@ -108,6 +108,11 @@ INSERT INTO Medical_Assistant (eID, physician) VALUES
 (2025 , 3779),
 (1529, 3294);
 
+INSERT INTO Medication (medication_name, cost) VALUES
+('Xanax', '6.00'),
+('Amoxicillin', '10.00'),
+('Ibuprofen', '2.50');
+
 INSERT INTO Procedure_Med (procID, medication) VALUES 
 (4181,'Xanax'),
 (3230,'Amoxicillin');
