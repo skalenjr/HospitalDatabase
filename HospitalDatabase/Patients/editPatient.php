@@ -53,6 +53,7 @@ else{
     //send updated patient information
     try{
     $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, Person.SSN=:SSN where Person.SSN=:oldSSN");
+    echo $_POST['first_name'];
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
     $stmt->bindValue(':oldSSN', $oldSSN);
@@ -69,7 +70,7 @@ else{
     }
     
     $pID = $_SESSION['pID'];
-    echo "Patient Information Succesfully Updated";
+    echo "Patient Information Succesfully Updated<br/>";
     echo "<a href='patient.php?pID=$pID'>View patient's information</a>";
     unset($pID);
     unset($_SESSION["pID"]);
