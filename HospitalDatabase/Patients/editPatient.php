@@ -32,7 +32,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     $stmt->execute();
     
     $row = $stmt->fetch();
-    $oldSSN = $row['SSN'];
+    $_SESSION["SSN"] = $row['SSN'];
     
     echo "<form method='post' action='editPatient.php'>";
     echo "<table style='border: solid 1px black;'>";
@@ -51,12 +51,12 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
-    echo $oldSSN;
-    $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name WHERE Person.SSN=:oldSSN; 
+        echo $_SESSION["pID"];
+    $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name WHERE Person.SSN=:SSN; 
     UPDATE Patient SET Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID;");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
-    $stmt->bindValue(':oldSSN', $oldSSN);
+    $stmt->bindValue(':SSN', $_SESSION["pID"]);
     $stmt->bindValue(':type_of_insurance', $_POST['type_of_insurance']);
     $stmt->bindValue(':pID', $_SESSION["pID"]);
     $stmt->execute();
@@ -69,6 +69,6 @@ else{
     echo "<a href='patient.php?pID=$pID'>View patient's information</a>";
     unset($pID);
     unset($_SESSION["pID"]);
-    unset($oldSSN);
+    unset($_SESSION["pID"]);
 }
 ?>
