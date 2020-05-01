@@ -18,19 +18,6 @@ INSERT INTO Person (first_name, last_name, SSN, address, dob) VALUES
 ('Rima', 'Kaufman', '608-66-5583', '7011 Euclid Drive Markleeville, CA 96120','4/29/1998'),
 ('Cindy', 'Rice', '552-83-5249', '82 East Vine Ave. Clovis, CA 93611','5/1/1947');
 
-INSERT INTO Employee (eID, SSN, hire_date) VALUES 
-(2025, '532-52-8977', '6/23/1965'),
-(3779, '440-13-7032', '8/18/1969'),
-(3294, '426-08-4661', '5/14/1973'),
-(2577, '525-32-0207', '11/6/1985'),
-(2166, '159-58-2752','6/8/1989'),
-(4506, '680-52-7323','12/24/1994'),
-(1875, '519-04-8969','7/3/1999'),
-(1529, '213-98-3803','3/22/2011'),
-(1992, '253-59-3480','8/6/2012'),
-(3332,'529-90-1876','8/27/2016'),
-(2603, '213-36-8214','10/10/1979');
-
 INSERT into Person (first_name, last_name, SSN, address, dob) VALUES 
 ('Jennifer', 'Thomas', '213-98-3803', '3183  West Street, Comstock Park, MI', '4/16/1962'), 
 ('Diana', 'Anderson', '519-04-8969', '1680  Newton Street STOCKTON, CA', '4/28/1998'), 
@@ -52,6 +39,19 @@ INSERT  into Person (first_name, last_name, SSN, address, dob) VALUES
 ('Jocelyn ', 'Dunham', '247-69-7503', '4605  Sweetwood Drive Denver, CO','1/20/1968'), 
 ('Joseph', 'Hughes', '526-97-2376', '1005  Argonne Street Frederica, DE', '	6/3/1962'), 
 ('Naomi', 'Mann', '051-64-7905', '690  John Calvin Drive Elk Grove Village, IL', '	8/24/1986');
+
+INSERT INTO Employee (eID, SSN, hire_date) VALUES 
+(2025, '532-52-8977', '6/23/1965'),
+(3779, '440-13-7032', '8/18/1969'),
+(3294, '426-08-4661', '5/14/1973'),
+(2577, '525-32-0207', '11/6/1985'),
+(2166, '159-58-2752','6/8/1989'),
+(4506, '680-52-7323','12/24/1994'),
+(1875, '519-04-8969','7/3/1999'),
+(1529, '213-98-3803','3/22/2011'),
+(1992, '253-59-3480','8/6/2012'),
+(3332,'529-90-1876','8/27/2016'),
+(2603, '213-36-8214','10/10/1979');
 
 INSERT INTO Procedures (procID, visitID, procedure_name, department, cost, room_number) VALUES
 (4181,	208,'Debridement of wound, burn, or infection', 'Emergency Department', '200', 1927),
