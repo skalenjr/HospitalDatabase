@@ -26,7 +26,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     $stmt->execute();
     
     $row = $stmt->fetch();
-    $oldSSN = $row['SSN'];
+    $_SESSION["oldSSN"] = $row['SSN'];
     
     echo "<form method='post' action='editPatient.php'>";
     echo "<table style='border: solid 1px black;'>";
@@ -44,7 +44,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
-    $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, Person.SSN=:SSN where Person.SSN = $oldSSN");
+    $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, Person.SSN=:SSN where Person.SSN = $_SESSION["oldSSN"]");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
     $stmt->bindValue(':SSN', $_POST['SSN']);
@@ -58,6 +58,7 @@ else{
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
+    unset($_SESSION["oldSSN"]);
     
     echo "<a href='Patients/patient.php?pID=$row[pID]'>View patient's information</a>";
 }
