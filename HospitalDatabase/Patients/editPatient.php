@@ -62,6 +62,5 @@ else{
     }
     
     echo "<a href='Patients/patient.php?pID=$row[pID]'>View patient's information</a>";
-    echo "<a href='Patients/hospitaldatabase.php'>Return to Main Menu</a>";
 }
 ?>
