@@ -1,7 +1,6 @@
 <?php
 
 require_once('../connection.php');
-echo "<a href='Patients/hospitaldatabase.php'>Return to Main Menu</a>";
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Edit Patient Information</h2>";
 
@@ -34,10 +33,10 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
     echo "<tr><td>Patient ID:</td><td>$row[pID]</td></tr>";
-    echo "<tr><td>First name</td><td><input name='first_name' type='text' size='15' value='$row[first_name]'></td></tr>";
-    echo "<tr><td>Last name</td><td><input name='last_name' type='text' size='15' value='$row[last_name]'></td></tr>";
-    echo "<tr><td>Salary</td><td><input name='SSN' type='text' min='0.01' step='0.01' size='11' value='$row[SSN]'></td></tr>";
-    echo "<tr><td>Salary</td><td><input name='type_of_insurance' type='text' min='0.01' step='0.01' size='25' value='$row[type_of_insurance]'></td></tr>";
+    echo "<tr><td>First Name</td><td><input name='first_name' type='text' size='15' value='$row[first_name]'></td></tr>";
+    echo "<tr><td>Last Name</td><td><input name='last_name' type='text' size='15' value='$row[last_name]'></td></tr>";
+    echo "<tr><td>SSN</td><td><input name='SSN' type='text' min='0.01' step='0.01' size='11' value='$row[SSN]'></td></tr>";
+    echo "<tr><td>Type of Insurance</td><td><input name='type_of_insurance' type='text' min='0.01' step='0.01' size='25' value='$row[type_of_insurance]'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
