@@ -17,7 +17,7 @@ echo "<option value='Nurses'> Nurses</option>";
 echo "</select>";
 echo "</form>";
 
-if($_SERVER['REQUEST_METHOD'] != 'POST' or $_GET['job']='All'){
+if($_SERVER['REQUEST_METHOD'] != 'POST' or $_GET['job']=='All'){
     $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Employee, Person where Employee.SSN=Person.SSN;");
     $stmt->execute();
     
@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST' or $_GET['job']='All'){
     echo "</tbody>";
     echo "</table>";
 }
-else if($_GET['job']='Doctors'){
+else if($_GET['job']=='Doctors'){
     $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Employee, Person, Doctor where Employee.SSN=Person.SSN and Doctor.eID=Employee.eID;");
     $stmt->execute();
     
@@ -43,7 +43,7 @@ else if($_GET['job']='Doctors'){
     echo "</tbody>";
     echo "</table>";
 }
-else if($_GET['job']='Nurses'){
+else if($_GET['job']=='Nurses'){
     $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Employee, Person, Doctor where Employee.SSN=Person.SSN and Nurse.eID=Employee.eID;");
     $stmt->execute();
     
