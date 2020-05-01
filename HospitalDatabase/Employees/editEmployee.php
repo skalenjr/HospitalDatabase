@@ -44,7 +44,8 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "</table>";
     echo "</form>";
     
-    $_SESSION["eID"] = $eid;  
+    $_SESSION['eID'] = $eid;  
+    $_SESSION['SSN']=$row['SSN'];
 }
 else{
     //send updated patient information
@@ -56,6 +57,7 @@ else{
     $stmt->bindValue(':Address', $_POST["Address"]);
     $stmt->bindValue(':hire_date', $_POST['hire_date']);
     $stmt->bindValue(':eID', $_SESSION["eID"]);
+    $stmt->bindValue(':SSN', $_SESSION["SSN"]);
     $stmt->execute();
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
@@ -65,7 +67,7 @@ else{
     echo "Employee Information Succesfully Updated<br/>";
     echo "<a href='employee.php?eID=$eID'>View Employee's information</a><br/>";
     echo "<a href='editEmployee.php'>Edit Another Employee's information</a><br/>";
-    unset($pID);
+    unset($eID);
     unset($_SESSION["eID"]);
     unset($_SESSION["SSN"]);
 }
