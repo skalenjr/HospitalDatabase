@@ -26,7 +26,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     $stmt->execute();
     
     $row = $stmt->fetch();
-    $_SESSION["oldSSN"] = $row['SSN'];
+    $oldSSN = $row['SSN'];
     
     echo "<form method='post' action='editPatient.php'>";
     echo "<table style='border: solid 1px black;'>";
@@ -47,7 +47,7 @@ else{
     $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, Person.SSN=:SSN where Person.SSN=:oldSSN");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
-    $stmt->bindValue(':oldSSN', $_SESSION['oldSSN']);
+    $stmt->bindValue(':oldSSN', $oldSSN);
     $stmt->bindValue(':SSN', $_POST['SSN']);
     $stmt->bindValue(':pID', $_GET["pID"]);
     $stmt->execute();
