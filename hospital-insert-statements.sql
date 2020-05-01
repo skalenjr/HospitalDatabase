@@ -62,11 +62,11 @@ INSERT INTO Visit (visitID, pID, admission_time, discharge_time, medical_issue, 
 (250,	4788,	'9:15 AM', '9:42 PM', 'Unspecified injury of extensor muscle, fascia and tendon of right index finger at forearm level', 4632);
 
 INSERT INTO Procedures (procID, visitID, procedure_name, department, cost, room_number) VALUES
-(4181,	208,'Debridement of wound, burn, or infection', 'Emergency Department', '200', 1927),
-(3706,	287,'Debridement of wound, burn, or infection', 'Emergency Department', '200',	1537),
-(4410,	107,'Hysteroscopy'	,'Emergency Department', '1,500', 1278),
-(3230,	377,'Minimally invasive endonasal endoscopic surgery', 'Neurology', '40,000', 3339),
-(2549,	250,'Carotid endarterectomy','Cardiology', '15,000' , 2125);
+(4181, 208,'Debridement of wound, burn, or infection', 'Emergency Department', '200', 1927),
+(3706, 287,'Debridement of wound, burn, or infection', 'Emergency Department', '200', 1537),
+(4410, 107,'Hysteroscopy'	,'Emergency Department', '1,500', 1278),
+(3230, 377,'Minimally invasive endonasal endoscopic surgery', 'Neurology', '40,000', 3339),
+(2549, 250,'Carotid endarterectomy','Cardiology', '15,000', 2125);
 
 INSERT INTO Rooms (department, room_number, room_floor) VALUES 
 ('Emergency department', 1337, 1),
