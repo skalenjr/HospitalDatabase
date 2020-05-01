@@ -126,3 +126,5 @@ INSERT INTO Prescription (prescriptionID, pID, visitID, medication, directions, 
 (13644,	2322,	287,	'Ibuprofen', '200 mg daily every 4 to 6 hours','9/10/2019', '10/10/2019'),
 (26475,	3212,	377,	'Xanax', '0.5 mg 3 times a day', '4/13/20', '4/20/20'),
 (18589,	1411,	105,	'Amoxicillin',' 500 mg orally 3 times a day for 7 days', '3/20/2015', '3/27/2015');
+
+INSERT INTO login_info(username, password) VALUES ('doctorguy','$2y$10$GmYvHhvMlsxTYP1kqS4gMeA5XkWNbQxqZQpDQ9kb2TZW6EJIizpgW');
