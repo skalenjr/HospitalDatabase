@@ -4,6 +4,8 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Edit Patient Information</h2>";
 
+$oldSSN = '';
+
 if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //retrieve list of patients
