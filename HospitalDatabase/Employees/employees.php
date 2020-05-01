@@ -44,7 +44,7 @@ else if($_GET['job']=='Doctors'){
     echo "</table>";
 }
 else if($_GET['job']=='Nurses'){
-    $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Employee, Person, Doctor where Employee.SSN=Person.SSN and Nurse.eID=Employee.eID;");
+    $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Employee, Person, Nurse where Employee.SSN=Person.SSN and Nurse.eID=Employee.eID;");
     $stmt->execute();
     
     echo "<table style='border: solid 1px black;'>";
