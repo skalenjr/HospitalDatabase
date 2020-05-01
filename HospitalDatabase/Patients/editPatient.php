@@ -51,12 +51,11 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
-        echo $_SESSION["SSN"];
     $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name WHERE Person.SSN=:SSN; 
     UPDATE Patient SET Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID;");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
-    $stmt->bindValue(':SSN', $_SESSION["pID"]);
+    $stmt->bindValue(':SSN', $_SESSION["SSN"]);
     $stmt->bindValue(':type_of_insurance', $_POST['type_of_insurance']);
     $stmt->bindValue(':pID', $_SESSION["pID"]);
     $stmt->execute();
@@ -69,6 +68,6 @@ else{
     echo "<a href='patient.php?pID=$pID'>View patient's information</a>";
     unset($pID);
     unset($_SESSION["pID"]);
-    unset($_SESSION["pID"]);
+    unset($_SESSION["SSN"]);
 }
 ?>
