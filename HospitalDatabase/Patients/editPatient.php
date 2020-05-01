@@ -4,8 +4,6 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Edit Patient Information</h2>";
 
-$pID = $_Get['pIF'];
-
 if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //retrieve list of patients
@@ -25,7 +23,6 @@ if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     //show current pateint information in form
     $stmt = $conn->prepare("select Patient.pID, Patient.SSN, Person.first_name, Person.last_name, Patient.type_of_insurance from Person, Patient where Person.SSN = Patient.SSN and Patient.pID = $_GET[pID]");
-    //$stmt->bindValue(':pID', $pID);
     $stmt->execute();
     
     $row = $stmt->fetch();
