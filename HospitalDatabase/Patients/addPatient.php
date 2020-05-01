@@ -5,11 +5,31 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Add A Patient</h2>";
 
-if (isset($_GET['pID']))
-{
-    
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+    //input patient info
+    echo "<form method='post' action='addPatient.php'>";
+    echo "<table style='border: solid 1px black;'>";
+    echo "<tbody>";
+    echo "<tr><td>First name</td><td><input name='first_name' type='text' size='25'></td></tr>";
+    echo "<tr><td>Last name</td><td><input name='last_name' type='text' size='25'></td></tr>";
+    echo "<tr><td>Type Of Insurance</td><td><input name='type_of_insurance' type='text' size='25'></td></tr>";
 }
 else{
-    
+    try {
+        $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN) VALUES(:first_name, :last_name, :SSN);
+        INSERT IGNORE INTO Patient(SSN, type_of_insurance) VALUES(:SSN, :type_of_insurance);");
+        $stmt->bindValue(':first_name', $_POST['first_name']);
+        $stmt->bindValue(':last_name', $_POST['last_name']);
+        $stmt->bindValue(':SSN', $_POST['SSN']);
+        $stmt->bindValue(':type_of_insurance', $_POST['type_of_insurance']);;
+        $stmt->execute();
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+    echo "Patient Succesfully Added<br/>";
+    $stmt = $conn->prepare("select pID from patients where SSN= $_POST[SSN];");
+    $stmt->execute();
+    $row = $stmt->fetch();
+    echo "<a href='patient.php?pID=$row[pID]'>View patient's information</a>";
 }
 ?><?php
