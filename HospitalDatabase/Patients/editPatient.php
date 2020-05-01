@@ -22,7 +22,8 @@ if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 }
 else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     //show current pateint information in form
-    $stmt = $conn->prepare("select Patient.pID, Patient.SSN, Person.first_name, Person.last_name, Patient.type_of_insurance from Person, Patient where Person.SSN = Patient.SSN and Patient.pID = $_GET[pID]");
+    $stmt = $conn->prepare("select Patient.pID, Patient.SSN, Person.first_name, Person.last_name, Patient.type_of_insurance from Person, Patient where Person.SSN = Patient.SSN and Patient.pID = $_GET['pID']");
+    //$stmt->bindValue(':employee_id', $employee_id);
     $stmt->execute();
     
     $row = $stmt->fetch();
