@@ -16,7 +16,6 @@ if (isset($_GET['pID']))
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[pID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[type_of_insurance]</td></tr>";
-        //if(isset($row[pID]))
         $pID = $row['pID'];
     }
     echo "</tbody>";
