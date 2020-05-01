@@ -51,7 +51,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
-    $stmt = $conn->prepare("UPDATE Person SET first_name=:first_name, last_name=:last_name where SSN=:oldSSN; 
+    $stmt = $conn->prepare("UPDATE Person SET first_name=:first_name, last_name=:last_name WHERE SSN=:oldSSN; 
     UPDATE Patient SET Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID;");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
