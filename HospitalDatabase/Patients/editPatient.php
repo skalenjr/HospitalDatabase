@@ -42,6 +42,8 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "</tbody>";
     echo "</table>";
     echo "</form>";
+    
+    $_SESSION["pID"] = $row[pID];  
 }
 else{
     //send updated patient information
@@ -55,13 +57,14 @@ else{
     
     $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
     $stmt->bindValue(':SSN', $_POST['SSN']);
-    $stmt->bindValue(':pID', $_POST['pID']);
+    $stmt->bindValue(':pID', $_SESSION["pID"]);
     $stmt->execute();
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
-    unset($oldSSN);
     
-    echo "<a href='patient.php?pID=$_POST[pID]'>View patient's information</a>";
+    
+    echo "<a href='patient.php?pID=$_SESSION[pID]'>View patient's information</a>";
+    unset($_SESSION["pID"]);
 }
 ?>
