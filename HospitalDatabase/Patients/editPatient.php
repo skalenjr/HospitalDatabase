@@ -12,7 +12,7 @@ if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
     
     echo "<form method='get'>";
     echo "<select name='pID' onchange='this.form.submit();'>";
-    
+    echo "<option value=''>Choose Patient</option>";
     while ($row = $stmt->fetch()) {
         echo "<option value='$row[pID]'>$row[first_name] $row[last_name]</option>";
     }
