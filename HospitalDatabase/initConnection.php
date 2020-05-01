@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$_SERVER['LogIn'] = FALSE;
+
 $servername = "localhost";
 $username = "kalensn";
 $password = "V00836202";

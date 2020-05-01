@@ -3,6 +3,8 @@ require_once('initConnection.php');
 
 session_start();
 
+$_SERVER['LogIn'] = FALSE;
+
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
     echo "<h1>Hospital Database</h1>";
@@ -21,7 +23,6 @@ else{
     
     try{
         $_SESSION["hashedPassword"] = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        echo password_hash('password', PASSWORD_BCRYPT);
         
         $STMT = $conn->prepare("select username from login_info where username = :username");
         $STMT->bindValue(':username', $_POST['username']);
