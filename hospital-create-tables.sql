@@ -75,6 +75,11 @@ FOREIGN KEY (visitID) REFERENCES Visit (visitID),
 FOREIGN KEY (room_number) REFERENCES Rooms (room_number),
 FOREIGN KEY (department) REFERENCES Department (dep_name));
 
+Create table Medication (
+medication_name		varchar(255),
+cost			varchar(255) NOT NULL,
+PRIMARY KEY (medication_name));
+                                                
 Create table Procedure_Med(
 procID			int(255),
 medication		varchar(255),
@@ -112,8 +117,3 @@ PRIMARY KEY (prescriptionID),
 FOREIGN KEY (pID) REFERENCES Patient (pID),
 FOREIGN KEY (visitID) REFERENCES Visit (visitID),
 FOREIGN KEY (medication) REFERENCES Medication (medication_name));
-
-Create table Medication (
-medication_name		varchar(255),
-cost			varchar(255) NOT NULL,
-PRIMARY KEY (medication_name));
