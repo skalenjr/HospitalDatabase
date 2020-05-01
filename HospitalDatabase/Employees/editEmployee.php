@@ -38,7 +38,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "<tr><td>First Name</td><td><input name='first_name' type='text' size='15' value='$row[first_name]'></td></tr>";
     echo "<tr><td>Last Name</td><td><input name='last_name' type='text' size='15' value='$row[last_name]'></td></tr>";
     echo "<tr><td>Address</td><td><input name='Address' type='text' size='60' value='$row[address]'></td></tr>";
-    echo "<tr><td>hire_date</td><td><input name='hire_date' type='text' size='8' value='$row[hire_Date]'></td></tr>";
+    echo "<tr><td>hire_date</td><td><input name='hire_date' type='text' size='8' value='$row[hire_date]'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
