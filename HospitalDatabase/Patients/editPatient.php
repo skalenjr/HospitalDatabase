@@ -61,7 +61,8 @@ else{
         echo "Error: " . $e->getMessage();
     }
     unset($oldSSN);
-    
-    echo "<a href='Patients/patient.php?pID=$_GET[pID]'>View patient's information</a>";
+    $pID = $_GET['pID'];
+    echo "<a href='Patients/patient.php?pID=$pID'>View patient's information</a>";
+    unset($pID);
 }
 ?>
