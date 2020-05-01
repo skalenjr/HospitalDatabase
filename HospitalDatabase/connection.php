@@ -21,6 +21,11 @@ function checkLogIn(){
     }
 }
 
+echo '<div style="position: relative; width: 250px;">';
+echo '<div style="position: absolute; top: 0; right: 0; width: 100px; text-align:right;">';
+echo '<a href="../index.php">logout</a>';
+echo '</div>';
+
 checkLogIn();
 
 ?>
