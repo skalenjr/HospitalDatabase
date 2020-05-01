@@ -58,6 +58,7 @@ else{
     
     $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
     $stmt->bindValue(':SSN', $_POST['SSN']);
+    $stmt->bindValue(':type_of_insurance', $_POST['type_of_insurance']);
     $stmt->bindValue(':pID', $_SESSION["pID"]);
     $stmt->execute();
     } catch(PDOException $e){
