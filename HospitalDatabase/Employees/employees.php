@@ -9,7 +9,7 @@ echo "<h2>Employees</h2>";
 
 echo "<form method='get'>";
 echo "<select name='job' onchange='this.form.submit();'>";
-echo "<option value=''>View By Job</option>";
+echo "<option value='' selected disabled hidden>View by job</option>";
 echo "<option value='All'> All Employees</option>";
 echo "<option value='Doctors'> Doctors</option>";
 echo "<option value='Nurses'> Nurses</option>";
