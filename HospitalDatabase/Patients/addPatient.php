@@ -32,7 +32,7 @@ else{
         echo "Error: " . $e->getMessage();
     }
     echo "Patient Succesfully Added<br/>";
-    $stmt = $conn->prepare("select pID from patients where SSN= $_POST[SSN];");
+    $stmt = $conn->prepare("select pID from Patients where SSN= $_POST[SSN];");
     $stmt->execute();
     $row = $stmt->fetch();
     echo "<a href='patient.php?pID=$row[pID]'>View patient's information</a>";
