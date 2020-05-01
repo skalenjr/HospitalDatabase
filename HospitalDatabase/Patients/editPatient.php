@@ -4,6 +4,8 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Edit Patient Information</h2>";
 
+$oldSSN = '';
+
 if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //retrieve list of patients
@@ -49,18 +51,17 @@ else{
     $stmt->bindValue(':last_name', $_POST['last_name']);
     $stmt->bindValue(':oldSSN', $oldSSN);
     $stmt->bindValue(':SSN', $_POST['SSN']);
-    $stmt->bindValue(':pID', $_GET["pID"]);
     $stmt->execute();
     
-    $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid= $row[pID]");
+    $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
     $stmt->bindValue(':SSN', $_POST['SSN']);
     $stmt->bindValue(':pID', $_GET["pID"]);
     $stmt->execute();
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
-    unset($_SESSION["oldSSN"]);
+    unset($oldSSN);
     
-    echo "<a href='Patients/patient.php?pID=$row[pID]'>View patient's information</a>";
+    echo "<a href='Patients/patient.php?pID=$_GET[pID]'>View patient's information</a>";
 }
 ?>
