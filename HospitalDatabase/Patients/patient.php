@@ -3,7 +3,7 @@
 require_once('../connection.php');
 
 echo "<h1>Hospital Database</h1>";
-echo "<h2>Patient Information</h2>";
+echo "<h2>Patient Information </h2>";
 
 if (isset($_GET['pID']))
 {
