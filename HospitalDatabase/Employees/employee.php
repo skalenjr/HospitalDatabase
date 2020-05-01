@@ -25,7 +25,7 @@ if (isset($_GET['eID']))
     echo "<a href='editEmployee.php?pID=$eID'>Edit Employee's Information</a>";
 }
 else {
-    // Retrieve list of patients
+    // Retrieve list of Employees
     $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Person, Employee where Person.SSN = Employee.SSN order by Employee.eID");
     $stmt->execute();
     
