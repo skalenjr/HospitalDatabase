@@ -53,6 +53,14 @@ INSERT INTO Employee (eID, SSN, hire_date) VALUES
 (3332,'529-90-1876','8/27/2016'),
 (2603, '213-36-8214','10/10/1979');
 
+INSERT INTO Patient (pIF, SSN, type_of_insuance) VALUES
+(1680, '213-98-3803', 'Anthem'),
+(2322, '546-49-7689', 'UnitedHealth'),
+(1319, '011-46-1137', 'Blue Cross/Blue Shield'),
+(3212, '159-58-2752', 'None'),
+(1411, '247-69-7503', 'Cigna'),
+(4788, '051-64-7905', 'Aetna');
+
 INSERT INTO Visit (visitID, pID, admission_time, discharge_time, medical_issue, room_number) VALUES
 (208,	1680,	'8:32 PM', '1:52 PM','Other specified disorders of left external ear', 1377),
 (287,	2322,	'5:57 PM', '1:26 PM','Inflammatory polyneuropathy, unspecified' ,1459),
