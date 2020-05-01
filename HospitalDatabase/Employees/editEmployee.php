@@ -53,7 +53,6 @@ else{
     UPDATE Employee SET Employee.hire_date=:hire_date where Employee.eid=:eID;");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
-    $stmt->bindValue(':SSN', $_SESSION["SSN"]);
     $stmt->bindValue(':Address', $_POST["Address"]);
     $stmt->bindValue(':hire_date', $_POST['hire_date']);
     $stmt->bindValue(':eID', $_SESSION["eID"]);
