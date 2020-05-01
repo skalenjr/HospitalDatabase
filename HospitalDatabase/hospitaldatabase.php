@@ -1,7 +1,7 @@
 <?php
 $text="'s";
 
-require_once('../connection.php');
+require_once('connection.php');
 
 echo '<html>';
 echo '<head>';
