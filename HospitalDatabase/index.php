@@ -3,7 +3,7 @@ require_once('initConnection.php');
 
 session_start();
 
-$_SERVER['LogIn'] = FALSE;
+unset($_SESSION['loggedin']);
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     
@@ -36,7 +36,7 @@ else{
             $row = $STMT-> fetch();
             if(password_verify($_POST['password'], $row[password])) {        
                 unset ($_SESSION["hashedPassword"]);
-                $_SERVER['LogIn']=True;
+                $_SESSION['loggedin']=True;
                 header("Location: hospitaldatabase.php");
             } 
             else{
