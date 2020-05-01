@@ -26,6 +26,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     $stmt->execute();
     
     $row = $stmt->fetch();
+    
     $oldSSN = $row['SSN'];
     
     echo "<form method='post' action='editPatient.php'>";
