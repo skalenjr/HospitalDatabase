@@ -40,7 +40,6 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "<tr><td>Patient ID:</td><td>$row[pID]</td></tr>";
     echo "<tr><td>First Name</td><td><input name='first_name' type='text' size='15' value='$row[first_name]'></td></tr>";
     echo "<tr><td>Last Name</td><td><input name='last_name' type='text' size='15' value='$row[last_name]'></td></tr>";
-    echo "<tr><td>SSN</td><td><input name='SSN' type='text' min='0.01' step='0.01' size='11' value='$row[SSN]'></td></tr>";
     echo "<tr><td>Type of Insurance</td><td><input name='type_of_insurance' type='text' min='0.01' step='0.01' size='15' value='$row[type_of_insurance]'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
@@ -52,16 +51,13 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
-    $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, Person.SSN=:SSN where Person.SSN=:oldSSN");
-    echo $_POST['first_name'];
+    $stmt = $conn->prepare("UPDATE Person SET first_name=:first_name, last_name=:last_name where SSN=:oldSSN");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
     $stmt->bindValue(':oldSSN', $oldSSN);
-    $stmt->bindValue(':SSN', $_POST['SSN']);
     $stmt->execute();
     
-    $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
-    $stmt->bindValue(':SSN', $_POST['SSN']);
+    $stmt = $conn->prepare("UPDATE Patient SET Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
     $stmt->bindValue(':type_of_insurance', $_POST['type_of_insurance']);
     $stmt->bindValue(':pID', $_SESSION["pID"]);
     $stmt->execute();
