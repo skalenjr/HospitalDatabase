@@ -11,7 +11,6 @@ $stmt->execute();
 echo "<table style='border: solid 1px black;'>";
 echo "<thead><tr><th>Patient ID</th><th>First name</th><th>Last name</th></tr></thead>";
 echo "<tbody>";
-echo "<option value=''>Choose Patient</option>";
 while ($row = $stmt->fetch()) {
         echo "<tr><td><a href='patient.php?pID=$row[pID]'>$row[pID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
 }
