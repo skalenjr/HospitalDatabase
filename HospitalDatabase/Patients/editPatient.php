@@ -46,6 +46,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
 else{
     //send updated patient information
     try{
+    $pID = $_GET['pID'];
     $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, Person.SSN=:SSN where Person.SSN=:oldSSN");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
@@ -55,13 +56,13 @@ else{
     
     $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid=:pID");
     $stmt->bindValue(':SSN', $_POST['SSN']);
-    $stmt->bindValue(':pID', $_GET["pID"]);
+    $stmt->bindValue(':pID', $pID);
     $stmt->execute();
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
     unset($oldSSN);
-    $pID = $_GET['pID'];
+    
     echo "<a href='patient.php?pID=$pID'>View patient's information</a>";
     unset($pID);
 }
