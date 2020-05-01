@@ -61,6 +61,19 @@ INSERT INTO Patient (pID, SSN, type_of_insurance) VALUES
 (1411, '247-69-7503', 'Cigna'),
 (4788, '051-64-7905', 'Aetna');
 
+INSERT INTO Rooms (department, room_number, room_floor) VALUES 
+('Emergency department', 1337, 1),
+('Cardiology', 1459, 1),
+('Neurology', 3076, 3),
+('Oncology', 1015, 1),
+('Pediatric Intensive care', 1243, 1),
+('Cardiology', 4632, 4),
+('Emergency Department', 1927, 1),
+('Emergency Department', 1537, 1),
+('Emergency Department', 1278, 1),
+('Neurology', 3339, 3),
+('Cardiology', 2125, 2);
+
 INSERT INTO Visit (visitID, pID, admission_time, discharge_time, medical_issue, room_number) VALUES
 (208,	1680,	'8:32 PM', '1:52 PM','Other specified disorders of left external ear', 1377),
 (287,	2322,	'5:57 PM', '1:26 PM','Inflammatory polyneuropathy, unspecified' ,1459),
@@ -75,19 +88,6 @@ INSERT INTO Procedures (procID, visitID, procedure_name, department, cost, room_
 (4410, 107,'Hysteroscopy'	,'Emergency Department', '1,500', 1278),
 (3230, 377,'Minimally invasive endonasal endoscopic surgery', 'Neurology', '40,000', 3339),
 (2549, 250,'Carotid endarterectomy','Cardiology', '15,000', 2125);
-
-INSERT INTO Rooms (department, room_number, room_floor) VALUES 
-('Emergency department', 1337, 1),
-('Cardiology', 1459, 1),
-('Neurology', 3076, 3),
-('Oncology', 1015, 1),
-('Pediatric Intensive care', 1243, 1),
-('Cardiology', 4632, 4),
-('Emergency Department', 1927, 1),
-('Emergency Department', 1537, 1),
-('Emergency Department', 1278, 1),
-('Neurology', 3339, 3),
-('Cardiology', 2125, 2);
 
 INSERT INTO Doctor (eID, date_of_degree) VALUES
 (3779, '5/2/1969'),
