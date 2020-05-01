@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('../connection.php');
 
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";

@@ -1,8 +1,10 @@
 <?php
 $text="'s";
 
-if (!$_SERVER['logIn'] = TRUE){
-    header("Location: ../index.php");
+session_start();
+
+if (!isset($_SESSION['loggedin'])){
+    header("Location: index.php");
 }
     
 echo '<div style="position: relative; width: 250px;">';
