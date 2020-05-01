@@ -51,7 +51,6 @@ else{
     $stmt->bindValue(':last_name', $_POST['last_name']);
     $stmt->bindValue(':oldSSN', $oldSSN);
     $stmt->bindValue(':SSN', $_POST['SSN']);
-    $stmt->bindValue(':pID', $_GET["pID"]);
     $stmt->execute();
     
     $stmt = $conn->prepare("UPDATE Patient SET Patient.SSN=:SSN, Patient.type_of_insurance=:type_of_insurance where Patient.pid= $row[pID]");
@@ -61,7 +60,7 @@ else{
     } catch(PDOException $e){
         echo "Error: " . $e->getMessage();
     }
-    unset($_SESSION["oldSSN"]);
+    unset($oldSSN);
     
     echo "<a href='Patients/patient.php?pID=$row[pID]'>View patient's information</a>";
 }
