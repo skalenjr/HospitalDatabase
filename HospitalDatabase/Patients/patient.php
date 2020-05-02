@@ -13,8 +13,8 @@ if (isset($_GET['pID']))
     $stmt = $conn->prepare("select Patient.pID, Patient.SSN, Person.first_name, Person.last_name, Person.address, Patient.type_of_insurance from Person, Patient where Person.SSN = Patient.SSN and Patient.pID = $_GET[pID]");
     $stmt->execute();
     
-    echo "<table style='border: solid 1px black;'>";
-    echo "<thead><tr><th>Patient ID</th><th width=150px>SSN</th><th>First name</th><th>Last name</th><th width=150px>Type Of Insurance</th><th width=400px>Address</th></tr></thead>";
+    echo "<table size = 1000px style='border: solid 1px black;'>";
+    echo "<thead><tr><th>Patient ID</th><th>SSN</th><th>First name</th><th>Last name</th><th>Type Of Insurance</th><th>Address</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[pID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[type_of_insurance]</td></tr><td>$row[address]</td>";
