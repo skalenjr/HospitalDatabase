@@ -26,8 +26,8 @@ if (isset($_GET['procID']))
     echo "<a href='../patient.php?pID=$pID'>View patient's Information</a><br/><br/>";
 }
 else {
-    // Retrieve list of patients
-    $stmt = $conn->prepare("select Patient.pID, Person.first_name, Person.last_name from Person, Patient where Person.SSN = Patient.SSN order by Patient.pID");
+    // Retrieve list of Procedures
+    $stmt = $conn->prepare("select Procedures.procID, Person.first_name, Person.last_name, Procedures.procedure_name from Person, Patient, Procedures where Person.SSN = Patient.SSN order by Patient.pID");
     $stmt->execute();
     
     echo "<form method='get'>";
