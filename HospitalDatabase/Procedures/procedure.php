@@ -34,7 +34,7 @@ else {
     echo "<select name='pID' onchange='this.form.submit();'>";
     echo "<option value='' selected disabled hidden>Choose Patient</option>";
     while ($row = $stmt->fetch()) {
-        echo "<option value='$row[pID]'>$row[first_name] $row[last_name]</option>";
+        echo "<option value='$row[procID]'>$row[first_name] $row[last_name] - $row[procedure_name]</option>";
     }
     
     echo "</select>";
