@@ -128,5 +128,4 @@ FOREIGN KEY (medication) REFERENCES Medication (medication_name));
 Create table login_info(
 username varchar(20) NOT NULL,
 password varchar(255) NOT NULL,
-account_type int,
 PRIMARY KEY (username));
