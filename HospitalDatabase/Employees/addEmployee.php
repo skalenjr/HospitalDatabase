@@ -58,7 +58,6 @@ else{
         echo "Error: " . $e->getMessage();
     }
     echo "Employee Succesfully Added<br/>";
-    echo $_POST['SSN'] . '<br/>';
     $stmt = $conn->prepare("select eID from Employee where SSN= $_POST[SSN];");
     $stmt->execute();
     $row = $stmt->fetch();
