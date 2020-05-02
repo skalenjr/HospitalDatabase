@@ -36,10 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        /*
-         * "INSERT IGNORE INTO Person (SSN, first_name, last_name, address, DOB) VALUES(:SSN,:first_name, :last_name, :address, :DOB);
-            INSERT IGNORE INTO Employee (SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, CURDATE(), :salary, :department_ID, :job_title);"
-         */
         $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, address, DOB) VALUES(:first_name, :last_name, :SSN, :address, :DOB);
         INSERT IGNORE INTO Employee(SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, :hire_date, :salary, :department_ID, :job_title);");
         $stmt->bindValue(':first_name', $_POST['first_name']);
@@ -48,12 +44,12 @@ else{
         $stmt->bindValue(':address', $_POST['address']);
         $stmt->bindValue(':DOB', $_POST['DOB']);
         $stmt->bindValue(':salary', $_POST['salary']);
+        $stmt->bindValue(':job_title', $_POST['job_title']);
         if($_POST['department_ID'] != -1) {
             $stmt->bindValue(':department_ID', $_POST['department_ID']);
         } else {
             $stmt->bindValue(':department_ID', null, PDO::PARAM_INT);
         }
-        $stmt->bindValue(':job_title', $_POST['job_title']);
         $stmt->execute();
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
