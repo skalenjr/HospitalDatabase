@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>SSN</td><td><input name='SSN' type='text' size='11'></td></tr>";
     echo "<tr><td>Salary</td><td><input name='salary' type='text' size='10'></td></tr>";
     echo "<tr><td>Job Title</td><td><input name='job_title' type='text' size='25'></td></tr>";
-    $stmt = $conn->prepare("SELECT department_id, department_name FROM Departments");
+    $stmt = $conn->prepare("SELECT department_id, department_name FROM Department");
     $stmt->execute();
     echo "<select name='department_ID'>";
     echo "<option value='-1'>No department</option>";
