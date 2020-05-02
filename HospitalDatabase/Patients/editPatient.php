@@ -8,7 +8,7 @@ echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Edit Patient Information</h2>";
 
 
-if (!isset($_GET['pID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
+if (!isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //retrieve list of patients
     $stmt = $conn->prepare("select Patient.pID, Person.first_name, Person.last_name from Person, Patient where Person.SSN = Patient.SSN order by Patient.pID");
