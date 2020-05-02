@@ -7,7 +7,7 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Visits</h2>";
 
-$stmt = $conn->prepare("select Visit.visitID, Visit.visit_date, Person.first_name, Person.last_name from Person, Patient, Visit where Visit.pID=Patient.SSN Person.SSN = Patient.SSN order by Visit.visitID");
+$stmt = $conn->prepare("select Visit.visitID, Visit.visit_date, Person.first_name, Person.last_name from Person, Patient, Visit where Visit.pID=Patient.pID and Person.SSN = Patient.SSN order by Visit.visitID");
 $stmt->execute();
 
 echo "<table style='border: solid 1px black;'>";
