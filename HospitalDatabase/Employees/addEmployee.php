@@ -55,17 +55,13 @@ else{
         }
         $stmt->bindValue(':job_title', $_POST['job_title']);
         $stmt->execute();
-        $_SESSION['SSN'] = $_POST['SSN'];
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     echo "Employee Succesfully Added<br/>";
-    $SSN = $_SESSION['SSN'];
-    $stmt = $conn->prepare("select eID from Employee where SSN= $SSN;");
+    $stmt = $conn->prepare("select eID from Employee where SSN= $_POST[SSN];");
     $stmt->execute();
     $row = $stmt->fetch();
     echo "<a href='employee.php?eID=$row[eID]'>View employee's information</a><br/>";
-    unset($_SESSION['SSN']);
-    unset($SSN);
 }
 ?><?php
