@@ -1,7 +1,8 @@
 CREATE TABLE Department(
-dep_name		varchar(255) ,
+department_ID               int(255) AUTO_INCREMENT,
+department_name		          varchar(255) ,
 department_head     	varchar(255) NOT NULL,
-PRIMARY KEY (dep_name)
+PRIMARY KEY (department_ID )
 );
 
 Create table Rooms(
@@ -20,10 +21,15 @@ PRIMARY KEY (SSN));
 
 Create table Employee(
 eID			int(255) AUTO_INCREMENT,
-SSN			char(15) NOT NULL UNIQUE, 
+SSN			char(15) NOT NULL UNIQUE,
+salary  double(8, 2),
+username    varchar(255),
 hire_date		varchar(255),
+job_title   varchar(255),
+department_ID int(255),
 PRIMARY KEY (eID),
-FOREIGN KEY (SSN) REFERENCES Person (SSN));
+FOREIGN KEY (SSN) REFERENCES Person (SSN),
+FOREIGN KEY (department_ID) REFERENCES Department (department_ID));
 
 Create table Doctor(
 eID			int(255),
@@ -57,6 +63,7 @@ visitID 		int(255) AUTO_INCREMENT,
 pID			int(255),
 admission_time		varchar(255) NOT NULL,
 discharge_time		varchar(255) NOT NULL,
+visit_date        text NOT NULL,
 medical_issue		text,
 room_number		varchar(255),
 PRIMARY KEY (visitID),
@@ -67,13 +74,13 @@ Create table Procedures(
 procID			int(255) AUTO_INCREMENT,
 visitID			int(255) NOT NULL,
 procedure_name 		text NOT NULL,
-department 		varchar(255),
+department_ID 		int(255),
 cost			varchar(255) NOT NULL,
 room_number		varchar(255),
 PRIMARY KEY (procID),
 FOREIGN KEY (visitID) REFERENCES Visit (visitID),
 FOREIGN KEY (room_number) REFERENCES Rooms (room_number),
-FOREIGN KEY (department) REFERENCES Department (dep_name));
+FOREIGN KEY (department_ID) REFERENCES Department (department_ID));
 
 Create table Medication (
 medication_name		varchar(255),
@@ -121,4 +128,5 @@ FOREIGN KEY (medication) REFERENCES Medication (medication_name));
 Create table login_info(
 username varchar(20) NOT NULL,
 password varchar(255) NOT NULL,
+account_type int,
 PRIMARY KEY (username));
