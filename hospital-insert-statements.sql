@@ -1,12 +1,12 @@
-INSERT INTO Department (dep_name, department_head) VALUES 
-('Emergency department' , 'Jeffrey Dean'),
-('Cardiology' , 'Jennie Farmer'),
-('Paediatric Intensive Care Unit' , 'Nadine Soto'),
-('Neonatal Intensive Care Unit' , 'Mayson Holcomb'),
-('Cardiovascular Intensive Care Unit' , 'Tomas Dunne'),
-('Neurology' , 'Bo Duffy'),
-('Oncology' , 'Nida Webb'),
-('Obstetrics and Gynaecology' , 'Emmy Gale');
+INSERT INTO Department (department_ID, department_name, department_head) VALUES 
+(1, 'Emergency department' , 'Jeffrey Dean'),
+(2, 'Cardiology' , 'Jennie Farmer'),
+(3, 'Paediatric Intensive Care Unit' , 'Nadine Soto'),
+(4, 'Neonatal Intensive Care Unit' , 'Mayson Holcomb'),
+(5, 'Cardiovascular Intensive Care Unit' , 'Tomas Dunne'),
+(6, 'Neurology' , 'Bo Duffy'),
+(7, 'Oncology' , 'Nida Webb'),
+(8, 'Obstetrics and Gynaecology' , 'Emmy Gale');
 
 
 INSERT INTO Person (first_name, last_name, SSN, address, dob) VALUES
@@ -74,20 +74,20 @@ INSERT INTO Rooms (department, room_number, room_floor) VALUES
 ('Neurology', 3339, 3),
 ('Cardiology', 2125, 2);
 
-INSERT INTO Visit (visitID, pID, admission_time, discharge_time, medical_issue, room_number) VALUES
-(208,	1680,	'8:32 PM', '1:52 PM','Other specified disorders of left external ear', 1337),
-(287,	2322,	'5:57 PM', '1:26 PM','Inflammatory polyneuropathy, unspecified' ,1459),
-(107,	1319,	'9:39 PM', '2:37 PM','Secondary lacrimal gland atrophy'	, 3076),
-(377,	3212,	'9:41 AM', '9:20 PM','Adverse effect of antifungal antibiotics, systemically used',1015),
-(105,	1411,	'10:20 AM','10:05 AM','Salter-Harris Type III physeal fracture of upper end of humerus',1243),
-(250,	4788,	'9:15 AM', '9:42 PM', 'Unspecified injury of extensor muscle, fascia and tendon of right index finger at forearm level', 4632);
+INSERT INTO Visit (visitID, pID, admission_time, discharge_time, visit_date, medical_issue, room_number) VALUES
+(208,	1680,	'8:32 PM', '1:52 PM', '8/12/2014','Other specified disorders of left external ear', 1337),
+(287,	2322,	'5:57 PM', '1:26 PM', '7/12/2016','Inflammatory polyneuropathy, unspecified' ,1459),
+(107,	1319,	'9:39 PM', '2:37 PM', '12/4/2018','Secondary lacrimal gland atrophy'	, 3076),
+(377,	3212,	'9:41 AM', '9:20 PM', '8/5/2019','Adverse effect of antifungal antibiotics, systemically used',1015),
+(105,	1411,	'10:20 AM','10:05 AM', '4/18/2020','Salter-Harris Type III physeal fracture of upper end of humerus',1243),
+(250,	4788,	'9:15 AM', '9:42 PM', '1/29/2020', 'Unspecified injury of extensor muscle, fascia and tendon of right index finger at forearm level', 4632);
 
-INSERT INTO Procedures (procID, visitID, procedure_name, department, cost, room_number) VALUES
-(4181, 208,'Debridement of wound, burn, or infection', 'Emergency Department', '200', 1927),
-(3706, 287,'Debridement of wound, burn, or infection', 'Emergency Department', '200', 1537),
-(4410, 107,'Hysteroscopy'	,'Emergency Department', '1,500', 1278),
-(3230, 377,'Minimally invasive endonasal endoscopic surgery', 'Neurology', '40,000', 3339),
-(2549, 250,'Carotid endarterectomy','Cardiology', '15,000', 2125);
+INSERT INTO Procedures (procID, visitID, procedure_name, department_ID, cost, room_number) VALUES
+(4181, 208,'Debridement of wound, burn, or infection', 1, '200', 1927),
+(3706, 287,'Debridement of wound, burn, or infection', 1, '200', 1537),
+(4410, 107,'Hysteroscopy'	,1, '1,500', 1278),
+(3230, 377,'Minimally invasive endonasal endoscopic surgery', 6, '40,000', 3339),
+(2549, 250,'Carotid endarterectomy',2, '15,000', 2125);
 
 INSERT INTO Doctor (eID, date_of_degree) VALUES
 (3779, '5/2/1969'),
@@ -134,4 +134,4 @@ INSERT INTO Prescription (prescriptionID, pID, visitID, medication, directions, 
 (26475,	3212,	377,	'Xanax', '0.5 mg 3 times a day', '4/13/20', '4/20/20'),
 (18589,	1411,	105,	'Amoxicillin',' 500 mg orally 3 times a day for 7 days', '3/20/2015', '3/27/2015');
 
-INSERT INTO login_info(username, password) VALUES ('doctorguy','$2y$10$GmYvHhvMlsxTYP1kqS4gMeA5XkWNbQxqZQpDQ9kb2TZW6EJIizpgW');
+INSERT INTO login_info(username, password, account_type) VALUES ('doctorguy','$2y$10$GmYvHhvMlsxTYP1kqS4gMeA5XkWNbQxqZQpDQ9kb2TZW6EJIizpgW', 2);
