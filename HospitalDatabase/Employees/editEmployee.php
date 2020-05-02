@@ -27,7 +27,7 @@ if (!isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     //show current pateint information in form
     $eid = $_GET['eID'];
-    $stmt = $conn->prepare("select Employee.eID, Person.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date, Employee.salary, Employee.department_ID,, Employee.job_title  from Person, Employee where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID]");
+    $stmt = $conn->prepare("select Employee.eID, Person.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date, Employee.salary, Employee.department_ID, Employee.job_title  from Person, Employee where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID]");
     $stmt->execute();
     $row = $stmt->fetch();
     
