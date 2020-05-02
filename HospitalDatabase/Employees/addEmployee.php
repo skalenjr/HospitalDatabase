@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>First name</td><td><input name='first_name' type='text' size='25'></td></tr>";
     echo "<tr><td>Last name</td><td><input name='last_name' type='text' size='25'></td></tr>";
     echo "<tr><td>SSN</td><td><input name='SSN' type='text' size='11'></td></tr>";
-    echo "<tr><td>Salary</td><td><input name='salary' type='' size='10'></td></tr>";
+    echo "<tr><td>Salary</td><td><input name='salary' type='text' size='10'></td></tr>";
     echo "<tr><td>Job Title</td><td><input name='job_title' type='text' size='25'></td></tr>";
     $stmt = $conn->prepare("SELECT department_id, department_name FROM Department");
     $stmt->execute();
@@ -39,10 +39,10 @@ else{
         $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, address, DOB) VALUES(:first_name, :last_name, :SSN, :address, :DOB);
         INSERT IGNORE INTO Employee(SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, CURDATE(), :salary, :department_ID, :job_title);");
         
-        echo $_POST['SSN'] + "<br/>";
-        echo $_POST['salary'] + "<br/>";
-        echo $_POST['job_title'] + "<br/>";
-        echo $_POST['department_ID'] + "<br/>";
+        echo $_POST['SSN'] . "<br/>";
+        echo $_POST['salary'] . "<br/>";
+        echo $_POST['job_title'] . "<br/>";
+        echo $_POST['department_ID'] . "<br/>";
         
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
