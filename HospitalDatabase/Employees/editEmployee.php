@@ -27,7 +27,7 @@ if (!isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     //show current pateint information in form
     $eid = $_GET['eID'];
-    $stmt = $conn->prepare("select Employee.eID, Person.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date from Person, Employee where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID]");
+    $stmt = $conn->prepare("select Employee.eID, Person.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date, Employee.salary, Employee.department_ID,, Employee.job_title  from Person, Employee where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID]");
     $stmt->execute();
     $row = $stmt->fetch();
     
@@ -37,6 +37,9 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "<tr><td>Employee ID:</td><td>$row[eID]</td></tr>";
     echo "<tr><td>First Name</td><td><input name='first_name' type='text' size='15' value='$row[first_name]'></td></tr>";
     echo "<tr><td>Last Name</td><td><input name='last_name' type='text' size='15' value='$row[last_name]'></td></tr>";
+    echo "<tr><td>Salary</td><td><input name='salary' type='text' size='10' value='$row[salary]'></td></tr>";
+    echo "<tr><td>Department ID</td><td><input name='department_ID' type='text' size='4' value='$row[department_ID]'></td></tr>";
+    echo "<tr><td>Job Title</td><td><input name='job_title' type='text' size='15' value='$row[job_title]'></td></tr>";
     echo "<tr><td>Address</td><td><input name='Address' type='text' size='60' value='$row[address]'></td></tr>";
     echo "<tr><td>hire_date</td><td><input name='hire_date' type='text' size='8' value='$row[hire_date]'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
@@ -51,9 +54,12 @@ else{
     //send updated patient information
     try{
     $stmt = $conn->prepare("UPDATE Person SET Person.first_name=:first_name, Person.last_name=:last_name, address=:Address WHERE Person.SSN=:SSN; 
-    UPDATE Employee SET Employee.hire_date=:hire_date where Employee.eid=:eID;");
+    UPDATE Employee SET Employee.hire_date=:hire_date, Employee.salary=:salary, Employee.department_ID=:department_ID, Employee.job_title=:job_title where Employee.eid=:eID;");
     $stmt->bindValue(':first_name', $_POST['first_name']);
     $stmt->bindValue(':last_name', $_POST['last_name']);
+    $stmt->bindValue(':salary', $_POST['salary']);
+    $stmt->bindValue(':department_ID', $_POST['department_ID']);
+    $stmt->bindValue(':job_title', $_POST['job_title']);
     $stmt->bindValue(':Address', $_POST["Address"]);
     $stmt->bindValue(':hire_date', $_POST['hire_date']);
     $stmt->bindValue(':eID', $_SESSION["eID"]);
