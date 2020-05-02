@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     }
     echo "</select>";
     echo "</td></tr>";
-    echo "<tr><td>Address</td><td><input name='Address' type='text' size='50'></td></tr>";
+    echo "<tr><td>Address</td><td><input name='address' type='text' size='50'></td></tr>";
     echo "<tr><td>Date Of Birth</td><td><input name='DOB' type='text' size='9'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
