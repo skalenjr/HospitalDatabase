@@ -13,7 +13,7 @@ if (isset($_GET['eID']))
     $stmt = $conn->prepare("select Employee.eID, Employee.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date from Person, Employee where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID]");
     $stmt->execute();
     
-    echo "<table style='border: solid 1px black;'>";
+    echo "<table width=900px style='border: solid 1px black;'>";
     echo "<thead><tr width=100px><th>Employee ID</th><th width=100px>SSN</th><th width=100px>First name</th><th width=100px>Last name</th><th width=400px>Address</th><th>Hire Date</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
