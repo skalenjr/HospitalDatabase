@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt->execute();
     echo "<tr><td>Department</td><td>";
     echo "<select name='department_ID'>";
-    echo "<option value='-1'>No department</option>";
+    echo "<option value='NULL'>No department</option>";
     while ($row = $stmt->fetch()) {
         echo "<option value='$row[department_ID]'>$row[department_name]</option>";
     }
