@@ -36,18 +36,18 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
+        $_SESSION['SSN'] = $_POST['SSN'];
         $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, address, DOB) VALUES(:first_name, :last_name, :SSN, :Address, :DOB);
         INSERT IGNORE INTO Employee(SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, CURDATE(), :salary, :department_ID, :job_title);");
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
-        $stmt->bindValue(':SSN', $_POST['SSN']);
+        $stmt->bindValue(':SSN', $_SESSION['SSN']);
         $stmt->bindValue(':salary', $_POST['salary']);
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->bindValue(':job_title', $_POST['job_title']);
         $stmt->bindValue(':Address', $_POST['Address']);
         $stmt->bindValue(':DOB', $_POST['DOB']);
         $stmt->execute();
-        $_SESSION['SSN'] = $_POST['SSN'];
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
