@@ -14,8 +14,7 @@ if (isset($_GET['eID']))
     $stmt->execute();
     
     echo "<table style='border: solid 1px black;'>";
-    echo "<colgroup> <col span='1' style=width:'100px'><col span='1' style=width:'100px'><col span='1' style=width:'100px'><col span='1' style=width:'400px'><col span='1' style=width:'100px'></colgroup>";
-    echo "<thead><tr><th>Employee ID</th><th>SSN</th><th>First name</th><th>Last name</th><th>Address</th><th>Hire Date</th></tr></thead>";
+    echo "<thead><tr width=100px><th>Employee ID</th><th>SSN</th><th>First name</th><th>Last name</th><th>Address</th><th>Hire Date</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[eID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[address]</td><td>$row[hire_date]</td></tr>";
