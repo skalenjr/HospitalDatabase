@@ -44,6 +44,7 @@ else{
         $stmt->bindValue(':SSN', $_POST['SSN']);
         $stmt->bindValue(':address', $_POST['address']);
         $stmt->bindValue(':DOB', $_POST['DOB']);
+        $stmt->bindValue(':hire_date', $_POST['hire_date']);
         $stmt->bindValue(':salary', $_POST['salary']);
         $stmt->bindValue(':job_title', $_POST['job_title']);
         if($_POST['department_ID'] != -1) {
