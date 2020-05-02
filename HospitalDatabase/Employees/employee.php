@@ -23,6 +23,7 @@ if (isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
     echo "</tbody>";
     echo "</table>";
     echo "<a href='editEmployee.php?eID=$eID'>Edit Employee's Information</a><br/>";
+    echo "<a href='employee.php'>View Another Employee's Information</a><br/>";
 }
 
 else {
