@@ -10,7 +10,7 @@ echo "<h2>Procedure Information</h2>";
 if (isset($_GET['procID']))
 {
     //give patients information
-    $stmt = $conn->prepare("select Visit.pID, Procedures.procID, Procedures.procedure_name, Procedures.cost, Procedures.room_number, Person.first_name, Person.last_name from Person, Patient, Procedures, Visit where Procedures.visitID = Visit.visitID and Visit.pID = Patient.pID and Person.SSN = Patient.SSN order by Procedures.procID");
+    $stmt = $conn->prepare("select Visit.pID, Procedures.procID, Procedures.procedure_name, Procedures.cost, Procedures.room_number, Person.first_name, Person.last_name from Person, Patient, Procedures, Visit where Procedures.procID = $_GET[procID] and Procedures.visitID = Visit.visitID and Visit.pID = Patient.pID and Person.SSN = Patient.SSN");
     $stmt->execute();
     
     echo "<table width=900px style='border: solid 1px black;'>";
