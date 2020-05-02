@@ -23,6 +23,7 @@ if (isset($_GET['pID']))
     echo "</tbody>";
     echo "</table>";
     echo "<a href='editPatient.php?pID=$pID'>Edit Patient's Information</a>";
+    echo "<a href='patient.php'>View Another Employee's Information</a><br/>";
 }
 else {
     // Retrieve list of patients
