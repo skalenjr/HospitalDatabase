@@ -7,7 +7,7 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Employee Information</h2>";
 
-if (isset($_GET['eID']))
+if (isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //give employee's information
     $stmt = $conn->prepare("select Employee.eID, Employee.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date from Person, Employee where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID]");
@@ -22,8 +22,9 @@ if (isset($_GET['eID']))
     }
     echo "</tbody>";
     echo "</table>";
-    echo "<a href='editEmployee.php?pID=$eID'>Edit Employee's Information</a><br/>";
+    echo "<a href='editEmployee.php?eID=$eID'>Edit Employee's Information</a><br/>";
 }
+
 else {
     // Retrieve list of Employees
     $stmt = $conn->prepare("select Employee.eID, Person.first_name, Person.last_name from Person, Employee where Person.SSN = Employee.SSN order by Employee.eID");
