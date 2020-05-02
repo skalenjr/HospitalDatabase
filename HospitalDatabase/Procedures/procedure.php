@@ -52,7 +52,7 @@ if (isset($_GET['procID']))
     echo "</tbody>";
     echo "</table>";
     
-    $stmt = $conn->prepare("select Procedure_Med.medication from Person, Procedures, Procedure_Nurses, Employee where Procedures.procID = $_GET[procID] and Procedures.procID = Procedure_Med.procID");
+    $stmt = $conn->prepare("select Procedure_Med.medication from Procedures, Procedure_Med where Procedures.procID = $_GET[procID] and Procedures.procID = Procedure_Med.procID");
     $stmt->execute();
     
     echo "<table style='border: solid 1px black;'>";
