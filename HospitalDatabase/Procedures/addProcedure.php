@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt->execute();
     echo "<tr><td>Nurse</td><td>";
     echo "<select name='Nurse_eID'>";
-    echo "<option value='' selected disabled hidden>Choose Medication</option>";
+    echo "<option value='' selected disabled hidden>Choose Nurse</option>";
     while ($row = $stmt->fetch()) {
         echo "<option value='$row[eID]'>$row[first_name] $row[last_name]</option>";
     }
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</td></tr>";
     echo "<tr><td>Procedure Name</td><td><input name='procedure_name' type='text' size='25'></td></tr>";
     echo "<tr><td>Procedure Cost</td><td><input name='cost' type='text' size='10'></td></tr>";
-    echo "<tr><td>Room Number</td><td><input name='room_number' type='text' size='25'></td></tr>";
+    echo "<tr><td>Room Number</td><td><input name='room_number' type='text' size='4'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
