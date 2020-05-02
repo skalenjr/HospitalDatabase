@@ -38,7 +38,7 @@ else{
     try {
         $_SESSION['SSN'] = $_POST['SSN'];
         $stmt = $conn->prepare("INSERT IGNORE INTO Person (SSN, first_name, last_name, address, DOB) VALUES(:SSN,:first_name, :last_name, :address, :DOB);
-        INSERT IGNORE INTO Employee(hire_date, salary, department_ID, job_title, SSN) VALUES(CURDATE(), :salary, :department_ID, :job_title, (select SSN from Employee where SSN=:SSN));");
+        INSERT IGNORE INTO Employee (SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, CURDATE(), :salary, :department_ID, :job_title);");
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
         $stmt->bindValue(':SSN', $_SESSION['SSN']);
