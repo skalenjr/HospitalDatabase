@@ -11,7 +11,7 @@ $stmt = $conn->prepare("select Procedures.procID, Procedures.procedure_name, Per
 $stmt->execute();
 
 echo "<table style='border: solid 1px black;'>";
-echo "<thead><tr><th>Procedure ID</th><th>First name</th><th>Last name</th></tr></thead>";
+echo "<thead><tr><th>Procedure ID</th><th>First name</th><th>Last name</th<th>Procedure Name</th>></tr></thead>";
 echo "<tbody>";
 while ($row = $stmt->fetch()) {
     echo "<tr><td><a href='procedure.php?pID=$row[procID]'>$row[procID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[procedure_name]</td></tr>";
