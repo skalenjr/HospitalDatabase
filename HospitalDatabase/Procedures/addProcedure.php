@@ -76,7 +76,10 @@ else{
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
+    $procID = $_SESSION['procID'];
     echo "Procedure Succesfully Added<br/>";
-    echo "<a href='procedure.php?procID=$_SESSION[procID]'>View procedure</a><br/>";
+    echo "<a href='procedure.php?procID=$procID'>View procedure</a><br/>";
+    unset($_SESSION['procID']);
+    unset($procID);
 }
 ?>
