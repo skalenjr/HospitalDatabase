@@ -40,18 +40,35 @@ INSERT  into Person (first_name, last_name, SSN, address, dob) VALUES
 ('Joseph', 'Hughes', '526-97-2376', '1005  Argonne Street Frederica, DE', '	6/3/1962'), 
 ('Naomi', 'Mann', '051-64-7905', '690  John Calvin Drive Elk Grove Village, IL', '	8/24/1986');
 
-INSERT INTO Employee (eID, SSN, hire_date) VALUES 
-(2025, '532-52-8977', '6/23/1965'),
-(3779, '440-13-7032', '8/18/1969'),
-(3294, '426-08-4661', '5/14/1973'),
-(2577, '525-32-0207', '11/6/1985'),
-(2166, '159-58-2752','6/8/1989'),
-(4506, '680-52-7323','12/24/1994'),
-(1875, '519-04-8969','7/3/1999'),
-(1529, '213-98-3803','3/22/2011'),
-(1992, '253-59-3480','8/6/2012'),
-(3332,'529-90-1876','8/27/2016'),
-(2603, '213-36-8214','10/10/1979');
+INSERT INTO Employee (eID, SSN, hire_date, job_title, salary, department_ID) VALUES 
+(2025, '532-52-8977', '6/23/1965', 'Medical Assistant', 7200, 4),
+(3779, '440-13-7032', '8/18/1969', 'Doctor', 15000, 4),
+(3294, '426-08-4661', '5/14/1973', 'Doctor', 15000, 7),
+(2577, '525-32-0207', '11/6/1985', NULL, 1500, 8),
+(2166, '159-58-2752','6/8/1989', 'Nurse', 1600, 1),
+(4506, '680-52-7323','12/24/1994', 'Nurse', 5000, 2),
+(1875, '519-04-8969','7/3/1999', 'Nurse', 14000, 3),
+(1529, '213-98-3803','3/22/2011', 'Medical Assistant', 6500, 5),
+(1992, '253-59-3480','8/6/2012', 'Doctor', 15000, 6),
+(3332,'529-90-1876','8/27/2016', 'Doctor', 15000, 5),
+(2603, '213-36-8214','10/10/1979', 'Doctor', 15000, 1);
+
+INSERT INTO Doctor (eID, date_of_degree) VALUES
+(3779, '5/2/1969'),
+(3294, '3/21/1973'),
+(2603, '7/18/1966'),
+(3332, '9/18/1977'),
+(2577, '8/7/1989'),
+(1992, '8/14/2000');
+
+INSERT INTO Nurse (eID, registered) VALUES 
+(1875, 'yes'),
+(2166, 'yes'),
+(4506, 'yes');
+
+INSERT INTO Medical_Assistant (eID, physician) VALUES 
+(2025 , 3779),
+(1529, 3294);
 
 INSERT INTO Patient (pID, SSN, type_of_insurance) VALUES
 (1680, '213-98-3803', 'Anthem'),
@@ -89,25 +106,6 @@ INSERT INTO Procedures (procID, visitID, procedure_name, department_ID, cost, ro
 (3230, 377,'Minimally invasive endonasal endoscopic surgery', 6, '40,000', 3339),
 (2549, 250,'Carotid endarterectomy',2, '15,000', 2125);
 
-INSERT INTO Doctor (eID, date_of_degree) VALUES
-(3779, '5/2/1969'),
-(3294, '3/21/1973'),
-(2603, '7/18/1966'),
-(3332, '9/18/1977'),
-(2577, '8/7/1989'),
-(1992, '8/14/2000');
-
-INSERT INTO Nurse (eID, registered) VALUES 
-(1875, 'yes'),
-(2603, 'yes'),
-(2166, 'yes'),
-(2025, 'yes'),
-(4506, 'yes');
-
-INSERT INTO Medical_Assistant (eID, physician) VALUES 
-(2025 , 3779),
-(1529, 3294);
-
 INSERT INTO Medication (medication_name, cost) VALUES
 ('Xanax', '6.00'),
 ('Amoxicillin', '10.00'),
@@ -125,7 +123,7 @@ INSERT INTO Procedure_Docs (procID, doctor) VALUES
 
 INSERT INTO Procedure_Nurses (procID, nurses) VALUES 
 (4181,1875),
-(3706,2603),
+(3706,4506),
 (4410,2166);
 
 INSERT INTO Prescription (prescriptionID, pID, visitID, medication, directions, start_date, end_date) VALUES
