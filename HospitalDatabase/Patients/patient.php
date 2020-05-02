@@ -14,10 +14,10 @@ if (isset($_GET['pID']))
     $stmt->execute();
     
     echo "<table width=900px style='border: solid 1px black;'>";
-    echo "<thead><tr style' width=5%'><th>Patient ID</th><th>SSN</th><th>First name</th><th>Last name</th><th >Type Of Insurance</th><th>Address</th></tr></thead>";
+    echo "<thead><tr><th>Patient ID</th><th>SSN</th><th>First name</th><th>Last name</th><th >Type Of Insurance</th><th>Address</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
-        echo "<tr><td>$row[pID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[type_of_insurance]</td></tr><td>$row[address]</td>";
+        echo "<tr><td>$row[pID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[type_of_insurance]</td><td>$row[address]</td></tr>";
         $pID = $row['pID'];
     }
     echo "</tbody>";
