@@ -14,7 +14,7 @@ if (isset($_GET['pID']))
     $stmt->execute();
     
     echo "<table width=800px style='border: solid 1px black;'>";
-    echo "<thead><tr><th style='width:15%'>Patient ID</th><th style='width:15%'>SSN</th><th style='width:20%'>First name</th style='width:20%'><th>Last name</th><th style='width:20%'>Type Of Insurance</th><th style='width:30%'>Address</th></tr></thead>";
+    echo "<thead><tr><th style='width:5%'>Patient ID</th><th style='width:15%'>SSN</th><th style='width:20%'>First name</th style='width:20%'><th>Last name</th><th style='width:20%'>Type Of Insurance</th><th style='width:40%'>Address</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[pID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[type_of_insurance]</td></tr><td>$row[address]</td>";
