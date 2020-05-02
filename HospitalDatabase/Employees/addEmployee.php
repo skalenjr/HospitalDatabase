@@ -39,6 +39,11 @@ else{
         $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, address, DOB) VALUES(:first_name, :last_name, :SSN, :address, :DOB);
         INSERT IGNORE INTO Employee(SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, CURDATE(), :salary, :department_ID, :job_title);");
         
+        echo $_POST['SSN'];
+        echo $_POST['salary'];
+        echo $_POST['job_title'];
+        echo $_POST['department_ID'];
+        
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
         $stmt->bindValue(':SSN', $_POST['SSN']);
