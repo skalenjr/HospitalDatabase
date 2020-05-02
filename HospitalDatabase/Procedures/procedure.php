@@ -32,7 +32,7 @@ if (isset($_GET['procID']))
     echo "<thead><tr><th>Doctor's First Name</th><th>Doctor's Last Name</th></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
-        echo "<tr><td>$row[procID]<td>$row[procedure_name]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[cost]</td><td>$row[room_number]</td></tr>";
+        echo "<tr><td>$row[first_name]<td>$row[last_name]</td></td";
         $pID = $row['pID'];
     }
     echo "</tbody>";
