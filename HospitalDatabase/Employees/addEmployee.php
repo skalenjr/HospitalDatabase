@@ -47,7 +47,8 @@ else{
         $stmt->bindValue(':job_title', $_POST['job_title']);
         if($_POST['department_ID'] != -1) {
             $stmt->bindValue(':department_ID', $_POST['department_ID']);
-        } else {
+        } 
+        else {
             $stmt->bindValue(':department_ID', null, PDO::PARAM_INT);
         }
         $stmt->execute();
