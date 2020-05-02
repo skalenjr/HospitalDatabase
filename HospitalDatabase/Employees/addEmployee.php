@@ -19,12 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Job Title</td><td><input name='job_title' type='text' size='25'></td></tr>";
     $stmt = $conn->prepare("SELECT department_id, department_name FROM Department");
     $stmt->execute();
+    echo "<tr><td>Department</td><td>";
     echo "<select name='department_ID'>";
     echo "<option value='-1'>No department</option>";
     while ($row = $stmt->fetch()) {
         echo "<option value='$row[department_ID]'>$row[department_name]</option>";
     }
     echo "</select>";
+    echo "</td></tr>";
     echo "<tr><td>Address</td><td><input name='Address' type='text' size='50'></td></tr>";
     echo "<tr><td>Date Of Birth</td><td><input name='DOB' type='text' size='9'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
