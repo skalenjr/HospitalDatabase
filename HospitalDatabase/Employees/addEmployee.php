@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     $stmt->execute();
     echo "<tr><td>Department</td><td>";
     echo "<select name='department_ID'>";
-    echo "<option value='NULL'>No department</option>";
+    echo "<option value='-1'>No department</option>";
     while ($row = $stmt->fetch()) {
         echo "<option value='$row[department_ID]'>$row[department_name]</option>";
     }
@@ -37,15 +37,19 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 else{
     try {
         $_SESSION['SSN'] = $_POST['SSN'];
-        $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, address, DOB) VALUES(:first_name, :last_name, :SSN, :Address, :DOB);
+        $stmt = $conn->prepare("INSERT IGNORE INTO Person (first_name, last_name, SSN, address, DOB) VALUES(:first_name, :last_name, :SSN, :address, :DOB);
         INSERT IGNORE INTO Employee(SSN, hire_date, salary, department_ID, job_title) VALUES(:SSN, CURDATE(), :salary, :department_ID, :job_title);");
         $stmt->bindValue(':first_name', $_POST['first_name']);
         $stmt->bindValue(':last_name', $_POST['last_name']);
         $stmt->bindValue(':SSN', $_SESSION['SSN']);
         $stmt->bindValue(':salary', $_POST['salary']);
-        $stmt->bindValue(':department_ID', $_POST['department_ID']);
+        if($_POST['department_ID'] != -1) {
+            $stmt->bindValue(':department_ID', $_POST['department_ID']);
+        } else {
+            $stmt->bindValue(':department_ID', null, PDO::PARAM_INT);
+        }
         $stmt->bindValue(':job_title', $_POST['job_title']);
-        $stmt->bindValue(':Address', $_POST['Address']);
+        $stmt->bindValue(':address', $_POST['address']);
         $stmt->bindValue(':DOB', $_POST['DOB']);
         $stmt->execute();
     } catch (PDOException $e) {
