@@ -24,7 +24,7 @@ if (isset($_GET['procID']))
     echo "</tbody>";
     echo "</table>";
     
-    $stmt = $conn->prepare("select Person.first_name, Person.last_name from Person, Procedures, Doctor, Employee where Procedures.procID = $_GET[procID] and Procedures.procID = Procedure_Docs.procID and
+    $stmt = $conn->prepare("select Person.first_name, Person.last_name from Person, Procedures, Procedure_Docs, Employee where Procedures.procID = $_GET[procID] and Procedures.procID = Procedure_Docs.procID and
     Procedure_Docs.doctor = Employee.eID and Person.SSN=Employee.SSN");
     $stmt->execute();
     
