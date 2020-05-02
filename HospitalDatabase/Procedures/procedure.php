@@ -14,7 +14,7 @@ if (isset($_GET['procID']))
     $stmt->execute();
     
     echo "<table width=900px style='border: solid 1px black;'>";
-    echo "<thead><tr><th>Procedure ID</th><th>Procedure Name</th><th>First name</th><th>Last name</th><th>Procedure Cost</th>th>Room Number</th></tr></thead>";
+    echo "<thead><tr><th>Procedure ID</th><th>Procedure Name</th><th>First name</th><th>Last name</th><th>Procedure Cost</th><th>Room Number</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[procID]<td>$row[procedure_name]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[procedure_cost]</td><td>$row[room_number]</td></tr>";
