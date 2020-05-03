@@ -65,14 +65,24 @@ else{
         $row = $stmt->fetch();
         $_SESSION['procID']=$row['procID'];
         
-        $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs(procID, doctor) VALUES(:procID, :doctor);
-        INSERT IGNORE INTO Procedure_Nurses(procID, nurses) VALUES(:procID, :nurse);
-        INSERT IGNORE INTO Procedure_Meds(procID, medication_name) VALUES(:procID, :medication);");
-        $stmt->bindValue(':procID', $row['procID']);
-        $stmt->bindValue(':doctor', $_POST['doctor_eID']);
-        $stmt->bindValue(':nurse', $_POST['doctor_eID']);
-        $stmt->bindValue(':medication', $_POST['medication_name']);  
-        $stmt->execute();
+        if(isset($_POST['doctor_eID'])){
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs(procID, doctor) VALUES(:procID, :doctor);");
+            $stmt->bindValue(':procID', $row['procID']);
+            $stmt->bindValue(':doctor', $_POST['doctor_eID']);
+            $stmt->execute();
+        }
+        if(isset($_POST['nurse_eID'])){
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Nurses(procID, nurses) VALUES(:procID, :nurse);");
+            $stmt->bindValue(':procID', $row['procID']);
+            $stmt->bindValue(':nurse', $_POST['nurse_eID']);
+            $stmt->execute();
+        }
+        if(isset($_POST['medication_name'])){
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Meds(procID, medication_name) VALUES(:procID, :medication);");
+            $stmt->bindValue(':procID', $row['procID']);
+            $stmt->bindValue(':medication', $_POST['medication_name']);
+            $stmt->execute();
+        }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
