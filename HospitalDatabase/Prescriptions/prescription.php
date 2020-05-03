@@ -18,7 +18,7 @@ if (isset($_GET['prescriptionID']))
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[prescriptionID]<td>$row[pID]</td></td><td>$row[visitID]</td><td>$row[medication]</td><td>$row[directions]</td><td>$row[start_date]</td><td>$row[end_date]</td></tr>";
-        $pID = $row['prescriptionID'];
+        $prescriptionID = $row['prescriptionID'];
     }
     echo "</tbody>";
     echo "</table>";
