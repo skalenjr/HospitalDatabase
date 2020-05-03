@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<form method='post' action='addPrescription.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
-    $stmt = $conn->prepare("select Patient.pID Person.first_name, Person.last_name from Person, Patient where Person.SSN=Patient.SSN");
+    $stmt = $conn->prepare("select Patient.pID, Person.first_name, Person.last_name from Person, Patient where Person.SSN=Patient.SSN");
     $stmt->execute();
     echo "<tr><td>Patient</td><td>";
     echo "<select name='pID'>";
