@@ -71,11 +71,10 @@ else{
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->execute();
         
-        $stmt = $conn->prepare("select MAX(Procedures.procID) from Procedures where Procedures.visitID=:visitID;");
-        $stmt->bindValue(':visitID', $_POST['visitID']);
+        $stmt = $conn->prepare("select MAX(Procedures.procID) from Procedures;");
+        //$stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->execute();
         $row = $stmt->fetch();
-        echo $row['procID'] . "<br/>";
         $_SESSION['procID'] = $row['procID'];
         
         if(isset($_POST['doctor_eID'])){
