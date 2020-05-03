@@ -91,6 +91,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST' and $_SESSION['result']=='success')
     echo "<a href='procedure.php?procID=$procID'>View procedure</a><br/>";
     unset($_SESSION['procID']);
     unset($procID);
+    unset($_SESSION['result']);
 }
 else{
     try {
