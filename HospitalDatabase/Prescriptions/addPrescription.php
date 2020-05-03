@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<select name='medication_name'>";
     echo "<option value='' selected disabled hidden>Choose Medication</option>";
     while ($row = $stmt->fetch()) {
-        echo "<option value='$row[medication]'>$row[medication]</option>";
+        echo "<option value='$row[medication_name]'>$row[medication_name]</option>";
     }
     echo "</select>";
     echo "</td></tr>";
