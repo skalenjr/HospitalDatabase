@@ -61,7 +61,7 @@ else{
         unset($_SESSION['success']);
     }
     else if($_SESSION['result']=='HasUsername'){
-        echo "Employee already has a username<br/>";
+        echo "Employee already has a username.<br/>";
         echo "<a href='addUser.php'>Try again</a><br/>";
     }
     else if($_SESSION['result']=='UsernameTaken'){
@@ -69,7 +69,7 @@ else{
         echo "<a href='addUser.php'>Try again</a><br/>";
     }
     else{
-        echo "Error creating log in<br/>";
+        echo "Error creating log in.<br/>";
         echo "<a href='addUser.php'>Try again</a><br/>";
     }
 }
