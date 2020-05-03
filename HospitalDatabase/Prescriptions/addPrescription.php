@@ -23,7 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</select>";
     echo "</td></tr>";
     echo "<tr><td>visitID</td><td><input name='visitID' type='text' size='4'></td></tr>";
-    echo "<tr><td>Medication</td><td><input name='medication' type='text' size='11'></td></tr>";
+    $stmt = $conn->prepare("select medication_name from Medication");
+    $stmt->execute();
+    echo "<tr><td>Medication</td><td>";
+    echo "<select name='medication_name'>";
+    echo "<option value='' selected disabled hidden>Choose Medication</option>";
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[medication]'>$row[medication]</option>";
+    }
+    echo "</select>";
+    echo "</td></tr>";
     echo "<tr><td>Directions</td><td><input name='directions' type='text' size='50'></td></tr>";
     echo "<tr><td>Start date</td><td><input name='start_date' type='text' size='9'></td></tr>";
     echo "<tr><td>End date</td><td><input name='end_date' type='text' size='9'></td></tr>";
@@ -34,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Presciption (pID, visitID, medication, directions, start_date,end_date) VALUES(:pID, :visitID, :medication, :directions, :start_date, :end_date");
+        $stmt = $conn->prepare("INSERT IGNORE INTO Presciption (pID, visitID, medication, directions, start_date,end_date) VALUES(:pID, :visitID, :medication_name, :directions, :start_date, :end_date");
         $stmt->bindValue(':pID', $_POST['pID']);
         $stmt->bindValue(':visitID', $_POST['visitID']);
-        $stmt->bindValue(':medication', $_POST['medication']);
+        $stmt->bindValue(':medication_name', $_POST['medication_name']);
         $stmt->bindValue(':directions', $_POST['directions']);
         $stmt->bindValue(':start_date', $_POST['start_date']);
         $stmt->bindValue(':end_date', $_POST['end_date']);
