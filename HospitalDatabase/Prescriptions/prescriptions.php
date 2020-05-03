@@ -18,5 +18,4 @@ while ($row = $stmt->fetch()) {
 }
 echo "</tbody>";
 echo "</table>";
-​
 ?>
