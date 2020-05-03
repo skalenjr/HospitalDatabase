@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' and !isset($_SESSION['result'])) {
 }
 else if($_SERVER['REQUEST_METHOD'] != 'POST' and $_SESSION['result']=='success'){
     $stmt = $conn->prepare("select max(procID) from Procedures where visitID=:visitID;");
-    $stmt->bindValue(':visitID', $_POST['visitID']);
+    $stmt->bindValue(':visitID', $_SESSION['visitID']);
     $stmt->execute();
     $row = $stmt->fetch();
     $_SESSION['procID'] = $row['procID'];
@@ -92,6 +92,7 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST' and $_SESSION['result']=='success')
     unset($_SESSION['procID']);
     unset($procID);
     unset($_SESSION['result']);
+    unset($_SESSION['visitID']);
 }
 else{
     try {
@@ -102,7 +103,7 @@ else{
         $stmt->bindValue(':room_number', $_POST['room_number']);
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->execute();
-        
+        $_SESSION['visitID']=$_POST['visitID'];
         $_SESSION['result']='success';
         
     } catch (PDOException $e) {
