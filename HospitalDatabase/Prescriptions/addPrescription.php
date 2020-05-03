@@ -46,7 +46,7 @@ else{
         $stmt = $conn->prepare("INSERT IGNORE INTO Prescription (pID, visitID, medication , directions, start_date, end_date) VALUES(:pID, :visitID, :medication, :directions, :start_date, :end_date);");
         $stmt->bindValue(':pID', $_POST['pID']);
         $stmt->bindValue(':visitID', $_POST['visitID']);
-        $stmt->bindValue(':medication_name', $_POST['medication_name']);
+        $stmt->bindValue(':medication', $_POST['medication_name']);
         $stmt->bindValue(':directions', $_POST['directions']);
         $stmt->bindValue(':start_date', $_POST['start_date']);
         $stmt->bindValue(':end_date', $_POST['end_date']);
