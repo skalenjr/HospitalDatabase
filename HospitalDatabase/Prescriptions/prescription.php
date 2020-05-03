@@ -17,7 +17,7 @@ if (isset($_GET['prescriptionID']))
     echo "<thead><tr><th>Prescription ID</th><th>Patient ID</th><th>Visit ID</th><th>Medication</th><th>Directions</th><th>Start Date</th><th>End Date</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
-        echo "<tr><td>$row[prescriptionID]</td><td><a href='../patient.php?pID=$row[pID]'>$row[pID]</a></td><td><a href='../visit.php?pID=$row[visitID]'>$row[visitID]</a></td><td>$row[medication]</td><td>$row[directions]</td><td>$row[start_date]</td><td>$row[end_date]</td></tr>";
+        echo "<tr><td>$row[prescriptionID]</td><td><a href='../Patients/patient.php?pID=$row[pID]'>$row[pID]</a></td><td><a href='../Visits/visit.php?pID=$row[visitID]'>$row[visitID]</a></td><td>$row[medication]</td><td>$row[directions]</td><td>$row[start_date]</td><td>$row[end_date]</td></tr>";
     }
     echo "</tbody>";
     echo "</table>";
