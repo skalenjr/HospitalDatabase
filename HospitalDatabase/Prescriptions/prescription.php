@@ -22,7 +22,6 @@ if (isset($_GET['prescriptionID']))
     }
     echo "</tbody>";
     echo "</table>";
-    echo "<a href='editPrescription.php?prescriptionID=$prescriptionID'>Edit Prescription's Information</a><br/>";
     echo "<a href='prescription.php'>View Another Prescription's Information</a><br/><br/>";
     unset($prescriptionID);
 }
