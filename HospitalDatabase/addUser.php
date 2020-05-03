@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once('../connection.php');
+require_once('initConnection.php');
 
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Add A Patient</h2>";
