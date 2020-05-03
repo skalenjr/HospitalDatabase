@@ -52,7 +52,7 @@ else{
         $stmt->bindValue(':end_date', $_POST['end_date']);
         $stmt->execute();
         
-        $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID=:visitID;");
+        $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID=:visitID");
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->execute();
         $row = $stmt->fetch();
