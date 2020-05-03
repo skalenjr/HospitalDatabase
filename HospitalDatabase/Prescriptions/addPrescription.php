@@ -34,8 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</select>";
     echo "</td></tr>";
     echo "<tr><td>Directions</td><td><input name='directions' type='text' size='50'></td></tr>";
-    echo "<tr><td>Start date</td><td><input name='start_date' type='text' size='9'></td></tr>";
-    echo "<tr><td>End date</td><td><input name='end_date' type='text' size='9'></td></tr>";
+    echo "<tr><td>Start date</td><td><input name='start_date' type='text' size='10'></td></tr>";
+    echo "<tr><td>End date</td><td><input name='end_date' type='text' size='10'></td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
@@ -50,6 +50,12 @@ else{
         $stmt->bindValue(':directions', $_POST['directions']);
         $stmt->bindValue(':start_date', $_POST['start_date']);
         $stmt->bindValue(':end_date', $_POST['end_date']);
+        echo $_POST['pID'] . '<br/>';
+        echo $_POST['visitID'] . '<br/>';
+        echo $_POST['medication_name'] . '<br/>';
+        echo $_POST['directions'] . '<br/>';
+        echo $_POST['start_date'] . '<br/>';
+        echo $_POST['end_date'] . '<br/>';
         $stmt->execute();
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -59,6 +65,6 @@ else{
     $stmt->bindValue(':visitID', $_POST['visitID']);
     $stmt->execute();
     $row = $stmt->fetch();
-    echo "<a href='prescription.php?pID=$row[prescriptionID]'>View prescription information</a><br/>";
+    echo "<a href='prescription.php?prescriptionID=$row[prescriptionID]'>View prescription information</a><br/>";
 }
 ?>
