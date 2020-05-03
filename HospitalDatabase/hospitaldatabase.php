@@ -40,8 +40,8 @@ echo '<li><a href="Procedures/addProcedure.php">Input procedure information</a><
 echo '</ul>';
 echo '<h2>Prescriptions</h2>';
 echo '<ul>';
-echo '<li><a href="Prescriptions/presciptions.php">View all prescriptions</a></li>';
-echo '<li><a href="Prescriptions/presciption.php">View a specific prescription</a></li>';
+echo '<li><a href="Prescriptions/prescriptions.php">View all prescriptions</a></li>';
+echo '<li><a href="Prescriptions/prescription.php">View a specific prescription</a></li>';
 echo '<li><a href="Prescriptions/patientsPresciption.php">View prescriptions for patient</a></li>';
 echo '<li><a href="Prescriptions/addPrescription.php">Input new prescription</a></li>';
 echo '</ul>';
