@@ -55,12 +55,10 @@ else{
         echo "Error: " . $e->getMessage();
     }
     echo "Prescription Succesfully Added<br/>";
-    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID= :visitID;");
+    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID=:visitID;");
     $stmt->bindValue(':visitID', $_POST['visitID']);
     $stmt->execute();
     $row = $stmt->fetch();
-    echo $_POST['visitID'] . '<br/>';
-    echo $row['prescriptionID'] . '<br/>';
     echo "<a href='prescription.php?prescriptionID=$row[prescriptionID]'>View prescription information</a><br/>";
 }
 ?>
