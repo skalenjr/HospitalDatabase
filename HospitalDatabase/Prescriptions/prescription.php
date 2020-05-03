@@ -28,7 +28,7 @@ if (isset($_GET['prescriptionID']))
 }
 else {
     // Retrieve list of patients
-    $stmt = $conn->prepare("select prescriptionID, pID, visitID, medication, directions, start_date, end_date from Prescription");
+    $stmt = $conn->prepare("select first_name, last_name, prescriptionID, pID, visitID, medication, directions, start_date, end_date from Prescription, Person, Patient where Person.SSN = Patient.SSN and Patient.pID = Prescription.pID");
     $stmt->execute();
     
     echo "<form method='get'>";
