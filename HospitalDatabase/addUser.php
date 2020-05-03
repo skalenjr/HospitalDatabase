@@ -30,7 +30,7 @@ else{
             //if the user doesn't already have a username
             $stmt = $conn->prepare("select username from login_info where username=:username");
             $stmt->bindValue(':username', $_POST['username']);
-            $stmt->execute(username);
+            $stmt->execute();
             $row = $stmt->fetch();
             if(!isset($row['username'])){
                 //if the username isn't taken
