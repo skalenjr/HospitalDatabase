@@ -24,6 +24,7 @@ if (isset($_GET['prescriptionID']))
     echo "</table>";
     echo "<a href='editPatient.php?pID=$prescriptionID'>Edit Prescription's Information</a><br/>";
     echo "<a href='patient.php'>View Another Prescription's Information</a><br/><br/>";
+    unset($prescriptionID);
 }
 else {
     // Retrieve list of patients
@@ -34,7 +35,7 @@ else {
     echo "<select name='prescription' onchange='this.form.submit();'>";
     echo "<option value='' selected disabled hidden>Choose Prescription</option>";
     while ($row = $stmt->fetch()) {
-        echo "<option value='$row[prescriptionID]'";
+        echo "<option value='$row[prescriptionID]'>$row[first_name] $row[last_name] - $row[medication]</option>";
     }
     
     echo "</select>";

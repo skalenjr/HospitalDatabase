@@ -24,6 +24,7 @@ if (isset($_GET['pID']))
     echo "</table>";
     echo "<a href='editPatient.php?pID=$pID'>Edit Patient's Information</a><br/>";
     echo "<a href='patient.php'>View Another Patient's Information</a><br/><br/>";
+    unset($pID);
 }
 else {
     // Retrieve list of patients
