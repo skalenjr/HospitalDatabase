@@ -42,7 +42,7 @@ echo '<h2>Prescriptions</h2>';
 echo '<ul>';
 echo '<li><a href="Prescriptions/prescriptions.php">View all prescriptions</a></li>';
 echo '<li><a href="Prescriptions/prescription.php">View a specific prescription</a></li>';
-echo '<li><a href="Prescriptions/patientsPrescription.php">View prescriptions for patient</a></li>';
+echo '<li><a href="Prescriptions/patientsPrescription.php">View prescriptions for a patient</a></li>';
 echo '<li><a href="Prescriptions/addPrescription.php">Input new prescription</a></li>';
 echo '</ul>';
 echo '<h2>Employees</h2>';
