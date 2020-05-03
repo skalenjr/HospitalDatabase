@@ -29,6 +29,7 @@ job_title   varchar(255),
 department_ID int(255),
 PRIMARY KEY (eID),
 FOREIGN KEY (SSN) REFERENCES Person (SSN),
+FOREIGN KEY (username) REFERENCES login_info (username),
 FOREIGN KEY (department_ID) REFERENCES Department (department_ID));
 
 Create table Doctor(
