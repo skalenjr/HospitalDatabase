@@ -50,12 +50,6 @@ else{
         $stmt->bindValue(':directions', $_POST['directions']);
         $stmt->bindValue(':start_date', $_POST['start_date']);
         $stmt->bindValue(':end_date', $_POST['end_date']);
-        echo $_POST['pID'] . '<br/>';
-        echo $_POST['visitID'] . '<br/>';
-        echo $_POST['medication_name'] . '<br/>';
-        echo $_POST['directions'] . '<br/>';
-        echo $_POST['start_date'] . '<br/>';
-        echo $_POST['end_date'] . '<br/>';
         $stmt->execute();
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
@@ -65,6 +59,8 @@ else{
     $stmt->bindValue(':visitID', $_POST['visitID']);
     $stmt->execute();
     $row = $stmt->fetch();
+    echo $_POST['visitID'] . '<br/>';
+    echo $row['prescriptionID'] . '<br/>';
     echo "<a href='prescription.php?prescriptionID=$row[prescriptionID]'>View prescription information</a><br/>";
 }
 ?>
