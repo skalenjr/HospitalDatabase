@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Presciption (pID, visitID, medication, directions, start_date,end_date) VALUES(:pID, :visitID, :medication_name, :directions, :start_date, :end_date");
+        $stmt = $conn->prepare("INSERT IGNORE INTO Prescription (pID, visitID, medication, directions, start_date, end_date) VALUES(:pID, :visitID, :medication_name, :directions, :start_date, :end_date");
         $stmt->bindValue(':pID', $_POST['pID']);
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->bindValue(':medication_name', $_POST['medication_name']);
@@ -55,8 +55,8 @@ else{
         echo "Error: " . $e->getMessage();
     }
     echo "Prescription Succesfully Added<br/>";
-    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where medication= :medication;");
-    $stmt->bindValue(':medication', $_POST['medication']);
+    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID= :visitID;");
+    $stmt->bindValue(':visitID', $_POST['visitID']);
     $stmt->execute();
     $row = $stmt->fetch();
     echo "<a href='prescription.php?pID=$row[prescriptionID]'>View prescription information</a><br/>";
