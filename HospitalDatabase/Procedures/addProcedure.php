@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Room Number</td><td><input name='room_number' type='text' size='4'></td></tr>";
     $stmt = $conn->prepare("select department_name, department_ID from Department");
     $stmt->execute();
-    echo "<tr><td>Medication</td><td>";
+    echo "<tr><td>Department</td><td>";
     echo "<select name='department_ID'>";
     echo "<option value='' selected disabled hidden>Choose Department</option>";
     while ($row = $stmt->fetch()) {
@@ -71,7 +71,7 @@ else{
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->execute();
         
-        $stmt = $conn->prepare("select max(procID) from Procedures where visitID = :visitID");
+        $stmt = $conn->prepare("select max(procID) from Procedures where visitID=:visitID;");
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->execute();
         $row = $stmt->fetch();
