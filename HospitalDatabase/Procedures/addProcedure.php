@@ -71,9 +71,8 @@ else{
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->execute();
         
-        $stmt = $conn->prepare("select max(procID) from Procedures where visitID=:visitID");
+        $stmt = $conn->prepare("select MAX(Procedures.procID) from Procedures where Procedures.visitID=:visitID;");
         $stmt->bindValue(':visitID', $_POST['visitID']);
-        echo $_POST['visitID'] . "<br/>";
         $stmt->execute();
         $row = $stmt->fetch();
         $_SESSION['procID']=$row['procID'];
@@ -91,7 +90,7 @@ else{
             $stmt->execute();
         }
         if(isset($_POST['medication_name'])){
-            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Meds (procID, medication_name) VALUES(:procID, :medication);");
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Med (procID, medication_name) VALUES(:procID, :medication);");
             $stmt->bindValue(':procID', $_SESSION['procID']);
             $stmt->bindValue(':medication', $_POST['medication_name']);
             $stmt->execute();
