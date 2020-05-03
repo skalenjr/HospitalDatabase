@@ -51,14 +51,19 @@ else{
         $stmt->bindValue(':start_date', $_POST['start_date']);
         $stmt->bindValue(':end_date', $_POST['end_date']);
         $stmt->execute();
+        
+        $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID=:visitID;");
+        $stmt->bindValue(':visitID', $_POST['visitID']);
+        $stmt->execute();
+        $row = $stmt->fetch();
+        $_SESSION['prescriptionID'] = $row['prescriptionID'];
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     echo "Prescription Succesfully Added<br/>";
-    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where visitID=:visitID;");
-    $stmt->bindValue(':visitID', $_POST['visitID']);
-    $stmt->execute();
-    $row = $stmt->fetch();
-    echo "<a href='prescription.php?prescriptionID=$row[prescriptionID]'>View prescription information</a><br/>";
+    $prescID = $_SESSION['prescriptionID'];
+    echo "<a href='prescription.php?prescriptionID=$prescID'>View prescription information</a><br/>";
+    unset($_SESSION['prescriptionID']);
+    unset($prescID);
 }
 ?>
