@@ -10,15 +10,14 @@ echo "<h2>Employee Information</h2>";
 if (isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
 {
     //give employee's information
+    $eID = $_GET['eID'];
     $stmt = $conn->prepare("select Employee.eID, Employee.SSN, Person.first_name, Person.last_name, Person.address, Employee.hire_date, Employee.salary, Employee.job_title, Department.department_name from Person, Employee, Department where Person.SSN = Employee.SSN and Employee.eID = $_GET[eID] and Department.department_ID = Employee.department_ID");
     $stmt->execute();
-    
     echo "<table width=900px style='border: solid 1px black;'>";
     echo "<thead><tr><th>Employee ID</th><th>SSN</th><th>First name</th><th>Last name</th><th>Job Title</th><th>Address</th><th>Hire Date</th><th>Salary</th><th>Department Name</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[eID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[job_title]</td><td>$row[address]</td><td>$row[hire_date]</td><td>$row[salary]</td><td>$row[department_name]</td></tr>";
-        $eID = $_GET['eID'];
     }
     echo "</tbody>";
     echo "</table>";
