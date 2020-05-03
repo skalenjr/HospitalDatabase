@@ -63,12 +63,12 @@ else{
         $stmt = $conn->prepare("select max(procID) from Procedures where vistID = $_POST[visitID]");
         $stmt->execute();
         $row = $stmt->fetch();
+        $_SESSION['procID']=$row['procID'];
         
         $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs(procID, doctor) VALUES(:procID, :doctor);
         INSERT IGNORE INTO Procedure_Nurses(procID, nurses) VALUES(:procID, :nurse);
         INSERT IGNORE INTO Procedure_Meds(procID, medication_name) VALUES(:procID, :medication);");
         $stmt->bindValue(':procID', $row['procID']);
-        $_SESSION['procID']=$row['procID'];
         $stmt->bindValue(':doctor', $_POST['doctor_eID']);
         $stmt->bindValue(':nurse', $_POST['doctor_eID']);
         $stmt->bindValue(':medication', $_POST['medication_name']);  
