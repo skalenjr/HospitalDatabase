@@ -43,8 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Prescription (pID, visitID, medication, directions, start_date, end_date) 
-        VALUES(:pID, :visitID, :medication_name, :directions, :start_date, :end_date);");
+        $stmt = $conn->prepare("INSERT IGNORE INTO Prescription (pID, visitID, medication , directions, start_date, end_date) VALUES(:pID, :visitID, :medication, :directions, :start_date, :end_date);");
         $stmt->bindValue(':pID', $_POST['pID']);
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->bindValue(':medication_name', $_POST['medication_name']);
