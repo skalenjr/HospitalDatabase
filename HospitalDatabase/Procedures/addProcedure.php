@@ -90,7 +90,7 @@ else{
             $stmt->execute();
         }
         if(isset($_POST['medication_name'])){
-            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Med (procID, medication_name) VALUES(:procID, :medication);");
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Med (procID, medication) VALUES(:procID, :medication);");
             $stmt->bindValue(':procID', $_SESSION['procID']);
             $stmt->bindValue(':medication', $_POST['medication_name']);
             $stmt->execute();
