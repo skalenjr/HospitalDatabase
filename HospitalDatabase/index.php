@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</tbody>";
     echo "</table>";
     echo "<input type='submit' name='submit' value='Sign in'>";
-    echo "</form>";
+    echo "</form><br/><br/>";
+    echo "<a href='addUser.php'>Create an account</a><br/>";
 }
 else{
     
