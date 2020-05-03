@@ -5,7 +5,7 @@ session_start();
 require_once('../connection.php');
 
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
-echo "<h2>Patient Information</h2>";
+echo "<h2>Prescription Information</h2>";
 
 if (isset($_GET['prescriptionID']))
 {
