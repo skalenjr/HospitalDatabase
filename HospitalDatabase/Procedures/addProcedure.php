@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Procedures(visitID, procedure_name, cost, room_number) VALUES(:visitID, :procedure_name, :cost, :room_number);");
+        $stmt = $conn->prepare("INSERT IGNORE INTO Procedures (visitID, procedure_name, cost, room_number) VALUES(:visitID, :procedure_name, :cost, :room_number);");
         $stmt->execute();
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->bindValue(':procedure_name', $_POST['procedure_name']);
@@ -66,19 +66,19 @@ else{
         $_SESSION['procID']=$row['procID'];
         
         if(isset($_POST['doctor_eID'])){
-            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs(procID, doctor) VALUES(:procID, :doctor);");
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs (procID, doctor) VALUES(:procID, :doctor);");
             $stmt->bindValue(':procID', $row['procID']);
             $stmt->bindValue(':doctor', $_POST['doctor_eID']);
             $stmt->execute();
         }
         if(isset($_POST['nurse_eID'])){
-            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Nurses(procID, nurses) VALUES(:procID, :nurse);");
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Nurses (procID, nurses) VALUES(:procID, :nurse);");
             $stmt->bindValue(':procID', $row['procID']);
             $stmt->bindValue(':nurse', $_POST['nurse_eID']);
             $stmt->execute();
         }
         if(isset($_POST['medication_name'])){
-            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Meds(procID, medication_name) VALUES(:procID, :medication);");
+            $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Meds (procID, medication_name) VALUES(:procID, :medication);");
             $stmt->bindValue(':procID', $row['procID']);
             $stmt->bindValue(':medication', $_POST['medication_name']);
             $stmt->execute();
