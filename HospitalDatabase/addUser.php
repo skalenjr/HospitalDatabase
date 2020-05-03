@@ -9,7 +9,7 @@ echo "<h2>Add A Patient</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     //input user info
-    echo "<form method='post' action='addPatient.php'>";
+    echo "<form method='post' action='addUser.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
     echo "<tr><td>Employee's SSN</td><td><input name='SSN' type='text' size='25'></td></tr>";
