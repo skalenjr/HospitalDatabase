@@ -12,9 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<form method='post' action='addPrescription.php'>";
     echo "<table style='border: solid 1px black;'>";
     echo "<tbody>";
-    echo "<tr><td>prescriptionID</td><td><input name='prescriptionID' type='text' size='25'></td></tr>";
-    echo "<tr><td>pID</td><td><input name='pID' type='text' size='25'></td></tr>";
-    echo "<tr><td>visitID</td><td><input name='visitID' type='text' size='25'></td></tr>";
+    $stmt = $conn->prepare("select Person.first_name, Person.last_name from Person, Patient where Person.SSN=Patient.SSN");
+    $stmt->execute();
+    echo "<tr><td>Patient</td><td>";
+    echo "<select name='pID'>";
+    echo "<option value='' selected disabled hidden>Choose Patient</option>";
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[pID]'>$row[first_name] $row[last_name]</option>";
+    }
+    echo "</select>";
+    echo "</td></tr>";
+    echo "<tr><td>visitID</td><td><input name='visitID' type='text' size='4'></td></tr>";
     echo "<tr><td>Medication</td><td><input name='medication' type='text' size='11'></td></tr>";
     echo "<tr><td>Directions</td><td><input name='directions' type='text' size='50'></td></tr>";
     echo "<tr><td>Start date</td><td><input name='start_date' type='text' size='9'></td></tr>";
@@ -26,8 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Presciption (prescriptionID, pID, visitID, medication, directions, start_date,end_date) VALUES(:prescriptionID, :pID, :visitID, :medication, :directions, :start_date, :end_date");
-        $stmt->bindValue(':prescriptionID', $_POST['prescriptionID']);
+        $stmt = $conn->prepare("INSERT IGNORE INTO Presciption (pID, visitID, medication, directions, start_date,end_date) VALUES(:pID, :visitID, :medication, :directions, :start_date, :end_date");
         $stmt->bindValue(':pID', $_POST['pID']);
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->bindValue(':medication', $_POST['medication']);
@@ -39,8 +46,8 @@ else{
         echo "Error: " . $e->getMessage();
     }
     echo "Prescription Succesfully Added<br/>";
-    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where pID= :pID;");
-    $stmt->bindValue(':pID', $_POST['pID']);
+    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where medication= :medication;");
+    $stmt->bindValue(':medication', $_POST['medication']);
     $stmt->execute();
     $row = $stmt->fetch();
     echo "<a href='prescription.php?pID=$row[prescriptionID]'>View prescription information</a><br/>";
