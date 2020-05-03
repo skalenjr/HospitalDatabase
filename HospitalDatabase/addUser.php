@@ -4,7 +4,7 @@ session_start();
 
 require_once('initConnection.php');
 
-echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
+echo "<h1><a href='index.php'>Hospital Database</a></h1>";
 echo "<h2>Add A Patient</h2>";
 
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -62,12 +62,10 @@ else{
     else if($_SESSION['result']=='HasUsername'){
         echo "Employee already has a username<br/>";
         echo "<a href='addUser.php'>Try again</a><br/>";
-        echo "<a href='index.php'>Log In</a><br/>";
     }
     else if($_SESSION['result']=='UsernameTaken'){
         echo "Username taken. Please try another username<br/>";
         echo "<a href='addUser.php'>Try again</a><br/>";
-        echo "<a href='index.php'>Log In</a><br/>";
     }
     else{
         echo "Error creating log in<br/>";
