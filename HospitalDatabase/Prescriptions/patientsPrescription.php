@@ -10,7 +10,7 @@ echo "<h2>Patient's Procedures</h2>";
 
 if (isset($_GET['pID']))
 {
-    $stmt = $conn->prepare("select Prescription.prescriptionID, Prescription.medication, first_name, last_name from Prescription, Patient, Person where Person.SSN=Patient.SSN and Prescription.pID=Patient.pID and Patient.pID=$_GET[pID])");
+    $stmt = $conn->prepare("select Prescription.prescriptionID, Prescription.medication, first_name, last_name from Prescription, Patient, Person where Person.SSN=Patient.SSN and Prescription.pID=Patient.pID and Patient.pID=$_GET[pID]");
     $stmt->execute();
     
     echo "<table style='border: solid 1px black;'>";
