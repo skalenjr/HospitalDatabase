@@ -39,7 +39,8 @@ else{
         echo "Error: " . $e->getMessage();
     }
     echo "Prescription Succesfully Added<br/>";
-    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where pID= $_POST[pID];");
+    $stmt = $conn->prepare("select max(prescriptionID) from Prescription where pID= :pID;");
+    $stmt->bindValue(':pID', $_POST['pID']);
     $stmt->execute();
     $row = $stmt->fetch();
     echo "<a href='prescription.php?pID=$row[prescriptionID]'>View prescription information</a><br/>";

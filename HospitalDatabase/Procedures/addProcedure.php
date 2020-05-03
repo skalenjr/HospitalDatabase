@@ -71,8 +71,8 @@ else{
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->execute();
         
-        $stmt = $conn->prepare("select MAX(Procedures.procID) from Procedures;");
-        //$stmt->bindValue(':visitID', $_POST['visitID']);
+        $stmt = $conn->prepare("select max(procID) from Procedures where visitID=:visitID;");
+        $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->execute();
         $row = $stmt->fetch();
         $_SESSION['procID'] = $row['procID'];
