@@ -46,7 +46,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "<tr><td>Procedure Name</td><td><input name='procedure_name' type='text' size='25'></td></tr>";
     echo "<tr><td>Procedure Cost</td><td><input name='cost' type='text' size='10'></td></tr>";
     echo "<tr><td>Room Number</td><td><input name='room_number' type='text' size='4'></td></tr>";
-    echo "<tr><td>Department ID</td><td><input name='department_ID' type='text' size='4'></td></tr>";
+    $stmt = $conn->prepare("select department_name, department_ID from Department");
+    $stmt->execute();
+    echo "<tr><td>Medication</td><td>";
+    echo "<select name='department_ID'>";
+    echo "<option value='' selected disabled hidden>Choose Department</option>";
+    while ($row = $stmt->fetch()) {
+        echo "<option value='$row[department_ID]'>$row[department_name]</option>";
+    }
+    echo "</select>";
+    echo "</td></tr>";
     echo "<tr><td></td><td><input type='submit' value='Submit'></td></tr>";
     echo "</tbody>";
     echo "</table>";
@@ -62,7 +71,8 @@ else{
         $stmt->bindValue(':department_ID', $_POST['department_ID']);
         $stmt->execute();
         
-        $stmt = $conn->prepare("select max(procID) from Procedures where visitID = $_POST[visitID]");
+        $stmt = $conn->prepare("select max(procID) from Procedures where visitID = :visitID");
+        $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->execute();
         $row = $stmt->fetch();
         $_SESSION['procID']=$row['procID'];
