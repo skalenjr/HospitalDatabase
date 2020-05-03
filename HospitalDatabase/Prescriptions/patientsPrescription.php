@@ -5,7 +5,7 @@ session_start();
 require_once('../connection.php');
 
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
-echo "<h2>Patient's Procedures</h2>";
+echo "<h2>Patient's Prescriptions</h2>";
 
 
 if (isset($_GET['pID']))
