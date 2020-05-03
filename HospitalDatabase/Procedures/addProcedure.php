@@ -75,7 +75,8 @@ else{
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->execute();
         $row = $stmt->fetch();
-        $_SESSION['procID']=$row['procID'];
+        echo $row['procID'] . "<br/>";
+        $_SESSION['procID'] = $row['procID'];
         
         if(isset($_POST['doctor_eID'])){
             $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs (procID, doctor) VALUES(:procID, :doctor);");
