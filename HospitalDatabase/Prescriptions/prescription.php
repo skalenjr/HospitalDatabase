@@ -17,13 +17,11 @@ if (isset($_GET['prescriptionID']))
     echo "<thead><tr><th>Prescription ID</th><th>SSN</th><th>Patient ID</th><th>Visit ID</th><th>Medication</th><th>Directions</th><th>Start Date</th><th>End Date</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
-        echo "<tr><td>$row[prescriptionID]<td>$row[pID]</td></td><td>$row[visitID]</td><td>$row[medication]</td><td>$row[directions]</td><td>$row[start_date]</td><td>$row[end_date]</td></tr>";
-        $prescriptionID = $row['prescriptionID'];
+        echo "<tr><td>$row[prescriptionID]<td></td><a href='patient.php?pID=$row[pID]'>$row[pID]</a></td><td>$row[visitID]</td><td>$row[medication]</td><td>$row[directions]</td><td>$row[start_date]</td><td>$row[end_date]</td></tr>";
     }
     echo "</tbody>";
     echo "</table>";
     echo "<a href='prescription.php'>View Another Prescription's Information</a><br/><br/>";
-    unset($prescriptionID);
 }
 else {
     // Retrieve list of patients
