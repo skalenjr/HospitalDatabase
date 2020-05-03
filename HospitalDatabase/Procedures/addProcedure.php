@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 else{
     try {
-        $stmt = $conn->prepare("INSERT IGNORE INTO Procedures (visitID, procedure_name, cost, room_number) VALUES(:visitID, :procedure_name, :cost, :room_number);");
+        $stmt = $conn->prepare("INSERT IGNORE INTO Procedures(visitID, procedure_name, cost, room_number) VALUES(:visitID, :procedure_name, :cost, :room_number);");
         $stmt->execute();
         $stmt->bindValue(':visitID', $_POST['visitID']);
         $stmt->bindValue(':procedure_name', $_POST['procedure_name']);
