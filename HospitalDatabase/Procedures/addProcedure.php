@@ -7,8 +7,6 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Input a Procedure</h2>";
 
-unset($_SESSION['result']);
-
 if ($_SERVER['REQUEST_METHOD'] != 'POST' and !isset($_SESSION['result'])) {
     //input procedure info
     echo "<form method='post' action='addProcedure.php'>";
@@ -106,6 +104,7 @@ else{
         $stmt->execute();
         
         $_SESSION['result']='success';
+        
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
