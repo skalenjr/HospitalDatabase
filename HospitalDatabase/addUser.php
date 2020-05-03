@@ -36,9 +36,10 @@ else{
                 //if the username isn't taken
                 $_SESSION['hashedPassword'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $stmt = $conn->prepare("INSERT IGNORE INTO login_info (username, password) VALUES(:username, :password);
-                INSERT IGNORE INTO Employee (username) VALUES(:username);");
+                UPDATE Employee SET Employee.username=:username where Employee.SSN=:SSN");
                 $stmt->bindValue(':username', $_POST['username']);
                 $stmt->bindValue(':password', $_SESSION['hashedPassword']);
+                $stmt->bindValue(':SSN', $_POST['SSN']);
                 $stmt->execute();
                 $_SESSION['result']='success';
                 unset($_SESSION['hashedPassword']);
