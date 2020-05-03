@@ -14,7 +14,7 @@ echo "<table style='border: solid 1px black;'>";
 echo "<thead><tr><th>Prescription ID</th><th>First name</th><th>Last name</th></tr></thead>";
 echo "<tbody>";
 while ($row = $stmt->fetch()) {
-    echo "<tr><td><a href='prescription.php?pID=$row[prescriptionID]'>$row[prescriptionID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
+    echo "<tr><td><a href='prescription.php?prescriptionID=$row[prescriptionID]'>$row[prescriptionID]</a></td><td>$row[first_name]</td><td>$row[last_name]</td></tr>";
 }
 echo "</tbody>";
 echo "</table>";
