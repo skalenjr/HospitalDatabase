@@ -17,7 +17,7 @@ if (isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
     echo "<thead><tr><th>Employee ID</th><th>SSN</th><th>First name</th><th>Last name</th><th>Job Title</th><th>Address</th><th>Hire Date</th><th>Salary</th><th>Department Name</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
-        echo "<tr><td>$row[eID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[job_title]</td><td>$row[address]</td><td>$row[hire_date]</td><td>$row[salary]</td><td>$row[department_name]</td></tr>";
+        echo "<tr><td>$eID<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[job_title]</td><td>$row[address]</td><td>$row[hire_date]</td><td>$row[salary]</td><td>$row[department_name]</td></tr>";
     }
     echo "</tbody>";
     echo "</table>";
