@@ -7,7 +7,7 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Input a Procedure</h2>";
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+if ($_SERVER['REQUEST_METHOD'] != 'POST' and !isset($_SESSION['result'])) {
     //input procedure info
     echo "<form method='post' action='addProcedure.php'>";
     echo "<table style='border: solid 1px black;'>";
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     echo "</table>";
     echo "</form>";
 }
-else if($_SESSION['result']=='success'){
+else if($_SERVER['REQUEST_METHOD'] != 'POST' and $_SESSION['result']=='success'){
     $stmt = $conn->prepare("select max(procID) from Procedures where visitID=:visitID;");
     $stmt->bindValue(':visitID', $_POST['visitID']);
     $stmt->execute();
