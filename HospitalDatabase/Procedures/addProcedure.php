@@ -7,7 +7,7 @@ require_once('../connection.php');
 echo "<h1><a href='../hospitaldatabase.php'>Hospital Database</a></h1>";
 echo "<h2>Input a Procedure</h2>";
 
-if ($_SERVER['REQUEST_METHOD'] != 'POST' and !isset($_SESSION['result'])) {
+if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     //input procedure info
     echo "<form method='post' action='addProcedure.php'>";
     echo "<table style='border: solid 1px black;'>";
@@ -61,39 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST' and !isset($_SESSION['result'])) {
     echo "</table>";
     echo "</form>";
 }
-else if($_SERVER['REQUEST_METHOD'] != 'POST' and $_SESSION['result']=='success'){
-    $stmt = $conn->prepare("select max(procID) from Procedures where visitID=:visitID;");
-    $stmt->bindValue(':visitID', $_SESSION['visitID']);
-    $stmt->execute();
-    $row = $stmt->fetch();
-    $_SESSION['procID'] = $row['procID'];
-    
-    if(isset($_POST['doctor_eID'])){
-        $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Docs (procID, doctor) VALUES(:procID, :doctor);");
-        $stmt->bindValue(':procID', $_SESSION['procID']);
-        $stmt->bindValue(':doctor', $_POST['doctor_eID']);
-        $stmt->execute();
-    }
-    if(isset($_POST['nurse_eID'])){
-        $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Nurses (procID, nurses) VALUES(:procID, :nurse);");
-        $stmt->bindValue(':procID', $_SESSION['procID']);
-        $stmt->bindValue(':nurse', $_POST['nurse_eID']);
-        $stmt->execute();
-    }
-    if(isset($_POST['medication_name'])){
-        $stmt = $conn->prepare("INSERT IGNORE INTO Procedure_Med (procID, medication) VALUES(:procID, :medication);");
-        $stmt->bindValue(':procID', $_SESSION['procID']);
-        $stmt->bindValue(':medication', $_POST['medication_name']);
-        $stmt->execute();
-    }
-    $procID = $_SESSION['procID'];
-    echo "Procedure Succesfully Added<br/>";
-    echo "<a href='procedure.php?procID=$procID'>View procedure</a><br/>";
-    unset($_SESSION['procID']);
-    unset($procID);
-    unset($_SESSION['result']);
-    unset($_SESSION['visitID']);
-}
 else{
     try {
         $stmt = $conn->prepare("INSERT IGNORE INTO Procedures (visitID, procedure_name, cost, room_number, department_ID) VALUES(:visitID, :procedure_name, :cost, :room_number, :department_ID);");
@@ -109,6 +76,6 @@ else{
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
-    header("Location: addProcedure.php");
+    echo "Procedure Succesfully Added<br/>";
 }
 ?>
