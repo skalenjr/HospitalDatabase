@@ -34,12 +34,14 @@ else{
             $row = $stmt->fetch();
             if(!isset($row['username'])){
                 //if the username isn't taken
+                $_SESSION['hashedPassword'] = password_hash($_POST['password'], PASSWORD_BCRYPT);
                 $stmt = $conn->prepare("INSERT IGNORE INTO login_info (username, password) VALUES(:username, :password);
                 INSERT IGNORE INTO Employee (username) VALUES(:username);");
                 $stmt->bindValue(':username', $_POST['username']);
-                $stmt->bindValue(':password', $_POST['password']);
+                $stmt->bindValue(':password', $_SESSION['hashedPassword']);
                 $stmt->execute();
                 $_SESSION['result']='success';
+                unset($_SESSION['hashedPassword']);
             }
             else{
                 $_SESSION['result']='UsernameTaken';
