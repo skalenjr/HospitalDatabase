@@ -18,12 +18,13 @@ if (isset($_GET['eID']) && $_SERVER['REQUEST_METHOD'] != 'POST')
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
         echo "<tr><td>$row[eID]<td>$row[SSN]</td></td><td>$row[first_name]</td><td>$row[last_name]</td><td>$row[job_title]</td><td>$row[address]</td><td>$row[hire_date]</td><td>$row[salary]</td><td>$row[department_name]</td></tr>";
-        $eID = $row['eID'];
+        $eID = $_GET['eID'];
     }
     echo "</tbody>";
     echo "</table>";
     echo "<a href='editEmployee.php?eID=$eID'>Edit Employee's Information</a><br/>";
     echo "<a href='employee.php'>View Another Employee's Information</a><br/>";
+    unset($eID);
 }
 
 else {
