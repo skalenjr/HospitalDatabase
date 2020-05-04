@@ -44,7 +44,8 @@ else if($_SERVER['REQUEST_METHOD'] != 'POST'){
     echo "</table>";
     echo "</form>";
     
-    $_SESSION["pID"] = $pid;  
+    $_SESSION["pID"] = $pid; 
+    $_SESSION["SSN"] = $row['SSN'];
 }
 else{
     //send updated patient information
