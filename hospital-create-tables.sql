@@ -19,6 +19,11 @@ address			varchar(255),
 dob			varchar(255),
 PRIMARY KEY (SSN));
 
+Create table login_info(
+username varchar(20) NOT NULL,
+password varchar(255) NOT NULL,
+PRIMARY KEY (username));    
+             
 Create table Employee(
 eID			int(255) AUTO_INCREMENT,
 SSN			char(15) NOT NULL UNIQUE,
@@ -125,8 +130,4 @@ PRIMARY KEY (prescriptionID),
 FOREIGN KEY (pID) REFERENCES Patient (pID),
 FOREIGN KEY (visitID) REFERENCES Visit (visitID),
 FOREIGN KEY (medication) REFERENCES Medication (medication_name));
-                                                
-Create table login_info(
-username varchar(20) NOT NULL,
-password varchar(255) NOT NULL,
-PRIMARY KEY (username));
+                                              
