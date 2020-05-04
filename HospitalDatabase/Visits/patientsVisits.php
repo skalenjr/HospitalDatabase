@@ -16,7 +16,7 @@ if(isset($_GET['pID']))
     echo "<thead><tr><th>Visit ID</th><th>First name</th><th>Last name</th></tr></thead>";
     echo "<tbody>";
     while ($row = $stmt->fetch()) {
-        echo "<tr><td><a href='procedure.php?procID=$row[visitID]'>$row[first_name]</td><td>$row[last_name]</td></tr>";
+        echo "<tr><td><a href='procedure.php?procID=$row[visitID]'$row[visitID]>$row[first_name]</td><td>$row[last_name]</td></tr>";
     }
     echo "</tbody>";
     echo "</table>";
