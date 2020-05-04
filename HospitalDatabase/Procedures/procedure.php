@@ -24,7 +24,6 @@ if (isset($_GET['procID']))
     echo "</tbody>";
     echo "</table>";
     echo "<a href='patientsProcedures.php?pID=$pID'>View all patient's procedures</a><br/>";
-    echo "<a href='../Patients/patient.php?pID=$pID'>View patient's information</a><br/><br/>";
     
     $stmt = $conn->prepare("select Person.first_name, Person.last_name from Person, Procedures, Procedure_Docs, Employee where Procedures.procID = $_GET[procID] and Procedures.procID = Procedure_Docs.procID and
     Procedure_Docs.doctor = Employee.eID and Person.SSN=Employee.SSN");
